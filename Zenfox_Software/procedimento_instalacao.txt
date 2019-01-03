@@ -1,0 +1,10 @@
+﻿- Instalar banco V 9.5
+- Senha Geral razorq2aw3@se4
+- Criar usuario razor_sat, senha Pk192168@q2aw3@se4 e marcar superuser
+- Criar banco de dados razor_sat
+- 
+
+- Instalar ACBR
+- Instalar Razor SAT
+
+- Inicializar o programa (Se não inicializar corretamente, verifique a porta do postgres em um arquivo txt na raiz da aplicação)
