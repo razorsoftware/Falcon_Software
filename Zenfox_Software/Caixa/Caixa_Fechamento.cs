@@ -151,10 +151,12 @@ namespace Zenfox_Software.caixa
 
                             Double desconto = 0;
                             if (txt_desconto_percentual.Text.Length > 0)
+                            {
                                 desconto = venda.valor_total * (Convert.ToDouble(txt_desconto_percentual.Text) / 100);
-
+                                desconto = Math.Floor(desconto * 100) / 100;
+                            }
                             if (txt_desconto.Text.Length > 0)
-                                desconto = venda.valor_total - Convert.ToDouble(txt_desconto.Text);
+                                desconto = Convert.ToDouble(txt_desconto.Text);
 
                             if (desconto > 0)
                                 aliquota_total = aliquota_total - ((venda.valor_total - desconto) * (empresa.aliquota_icms / 100));
@@ -219,12 +221,15 @@ namespace Zenfox_Software.caixa
 
                             Double desconto = 0;
                             if (txt_desconto_percentual.Text.Length > 0)
+                            {
                                 desconto = venda.valor_total * (Convert.ToDouble(txt_desconto_percentual.Text) / 100);
-
+                                desconto = Math.Floor(desconto * 100) / 100;
+                            }
                             if (txt_desconto.Text.Length > 0)
-                                desconto = venda.valor_total - Convert.ToDouble(txt_desconto.Text);
-
-                            _venda.desconto = Math.Round(desconto,2, MidpointRounding.AwayFromZero);
+                            {
+                                desconto = Convert.ToDouble(txt_desconto.Text);                                
+                            }
+                            _venda.desconto = desconto;
 
                             Zenfox_Software_OO.Cadastros.Vendas cmd = new Zenfox_Software_OO.Cadastros.Vendas();
                             cmd.fecha_venda(_venda);
@@ -374,17 +379,18 @@ namespace Zenfox_Software.caixa
                 total += Convert.ToDouble(txt_cheque.Text);
 
             if (txt_desconto_percentual.Text.Length > 0)
+            {
                 desconto = venda.valor_total * (Convert.ToDouble(txt_desconto_percentual.Text) / 100);
-
+                desconto = Math.Floor(desconto * 100) / 100;
+            }
             if (txt_desconto.Text.Length > 0)
-                desconto = venda.valor_total - Convert.ToDouble(txt_desconto.Text);
+                desconto = Convert.ToDouble(txt_desconto.Text);
 
             troco = total - (venda.valor_total - desconto);
             if (troco <= 0)
                 troco = 0;
 
-
-            lbl_desconto.Text = "R$ " + Convert.ToDouble(desconto).ToString("f2");
+            lbl_desconto.Text = "R$ " + desconto;
             lbl_troco.Text = "R$ " + Convert.ToDouble(troco).ToString("f2");
             lbl_pagamento.Text = "R$ " + Convert.ToDouble(total).ToString("f2");
             lbl_total_pagar.Text = "R$ " + (venda.valor_total - desconto).ToString("f2");
