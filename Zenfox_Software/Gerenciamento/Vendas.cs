@@ -55,6 +55,8 @@ namespace Zenfox_Software.Gerenciamento
             Zenfox_Software_OO.Cadastros.Vendas cmd = new Zenfox_Software_OO.Cadastros.Vendas();
             dataGridView1.DataSource = cmd.seleciona_vendas_gerencia(new Zenfox_Software_OO.Cadastros.Entidade_Vendas() { data_inicial = data_inicial.Value.ToString().Replace("00:00:00","").Trim(), data_final = data_final.Value.ToString().Replace("00:00:00", "").Trim() });
 
+            Zenfox_Software_OO.Cadastros.Entidade_Vendas total_cancelado = cmd.seleciona_totais_cancelado(new Zenfox_Software_OO.Cadastros.Entidade_Vendas() { data_inicial = data_inicial.Value.ToString().Replace("00:00:00", "").Trim(), data_final = data_final.Value.ToString().Replace("00:00:00", "").Trim() });
+            lbl_total_cancelado.Text = "R$ " + Math.Round(total_cancelado.valor_total, 2);
 
             Zenfox_Software_OO.Cadastros.Entidade_Vendas total = new Zenfox_Software_OO.Cadastros.Entidade_Vendas();
             total = cmd.seleciona_totais(new Zenfox_Software_OO.Cadastros.Entidade_Vendas() { data_inicial = data_inicial.Value.ToString().Replace("00:00:00", "").Trim(), data_final = data_final.Value.ToString().Replace("00:00:00", "").Trim() });
@@ -64,10 +66,9 @@ namespace Zenfox_Software.Gerenciamento
             lbl_total_debito.Text = "R$ " + Math.Round(total.debito, 2);
             lbl_total_descontos.Text = "R$ " + Math.Round(total.desconto, 2);
             lbl_total_crediario.Text = "R$ " + Math.Round(total.crediario, 2);
-            lbl_total_geral.Text = "R$ " + Math.Round(total.valor_total, 2);
+            Double xx = Math.Round(total.desconto + total_cancelado.valor_total,2);
+            lbl_total_geral.Text = "R$ " + Math.Round(total.valor_total - xx, 2);
 
-            total = cmd.seleciona_totais_cancelado(new Zenfox_Software_OO.Cadastros.Entidade_Vendas() { data_inicial = data_inicial.Value.ToString().Replace("00:00:00", "").Trim(), data_final = data_final.Value.ToString().Replace("00:00:00", "").Trim() });
-            lbl_total_cancelado.Text = "R$ " + Math.Round(total.valor_total, 2);
         }
 
         private void button4_Click(object sender, EventArgs e)
@@ -153,6 +154,11 @@ namespace Zenfox_Software.Gerenciamento
                     MessageBox.Show("Esta venda excedeu o período de 30 minutos para cancelamento !");
 
             }
+        }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
         }
     }
 }

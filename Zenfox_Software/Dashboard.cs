@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.Globalization;
 using System.IO;
@@ -23,7 +24,7 @@ namespace Zenfox_Software
 {
     public partial class Dashboard : Form
     {
-        public  Int32 id = 0;
+        public Int32 id = 0;
         private Boolean atualizacao_disponivel = false;
         public String mac_addres = "";
 
@@ -114,10 +115,10 @@ namespace Zenfox_Software
                 caixa.Caixa cmd = new caixa.Caixa(this.id);
                 cmd.ShowDialog();
             }
-            catch(Exception ee)
+            catch (Exception ee)
             {
                 MessageBox.Show("Um erro inesperado aconteceu : " + ee.Message);
-            }            
+            }
         }
 
         private void button4_Click(object sender, EventArgs e)
@@ -166,7 +167,7 @@ namespace Zenfox_Software
             catch
             {
                 MessageBox.Show("Falha de comunicação com a internet !");
-               // cmd.Close();
+                // cmd.Close();
             }
         }
 
@@ -216,6 +217,7 @@ namespace Zenfox_Software
             MessageBox.Show("Módulo ainda não disponível");
             //MessageBox.Show("Módulo em desenvolvimento");
         }
+        
 
         private void btn_att_Click(object sender, EventArgs e)
         {
@@ -224,25 +226,70 @@ namespace Zenfox_Software
 
             if (dr == DialogResult.Yes)
             {
+                // Verifica se pastas e arquivos existem ========================================
                 if (!Directory.Exists("C:/Rede_Sistema"))
                     Directory.CreateDirectory("C:/Rede_Sistema");
 
-                Zenfox_Software_OO.atualizacao cmd = new Zenfox_Software_OO.atualizacao();
-                List<Zenfox_Software_OO.atualizacao.Entidade> list = new List<Zenfox_Software_OO.atualizacao.Entidade>();//cmd.verifica_existencia_nova_atualizacao(new Zenfox_Software_OO.atualizacao.Entidade() { mac_addres = this.mac_addres });
-                //File.WriteAllBytes("C:\\rede_sistema\\razor.rar", list[0].arquivo);
-                
-                FileStream fs = new FileStream("C:\\rede_Sistema\\atualizacao.rar", FileMode.Create);
-                fs.Write(list[0].arquivo, 0, 10000000);
-                fs.Close();
+                if (File.Exists("C:/Rede_sistema/razor_software.rar"))
+                    File.Delete("C:/Rede_sistema/razor_software.rar");
 
-                RarArchive archive = RarArchive.Open("C:\\Rede_Sistema\\atualizacao.rar");
-                
-                foreach (RarArchiveEntry item in archive.Entries)
+                string arqui_bat = "C:/Rede_Sistema/start_updater.bat";
+                if (!File.Exists(arqui_bat))
                 {
-                    string path = Path.Combine("C:\\rede_sistema", Path.GetFileName(item.FilePath));
-                    item.WriteToFile(path);
+                    File.Create(arqui_bat).Close();
+                    TextWriter escrever = File.AppendText(arqui_bat);
+                    //escrever.WriteLine("@echo off");
+                    // escrever.WriteLine("START Instalador_Trend_SAT");
+
+                    escrever.WriteLine("@echo off");
+                    escrever.WriteLine("cd C:/Program Files (x86)/Razor/Razor_Instalador_Updater");
+                    escrever.WriteLine("Start /b Updater.exe");
+
+                    // File.Delete(arqui_bat);
+                    escrever.Close();
+                    //Process.Start .StartInfo.FileName = arqui_bat;
+                    //Process.Start();
                 }
 
+                Process proc = new Process();
+                proc.StartInfo.FileName = "start_updater.bat";
+                proc.StartInfo.WorkingDirectory = "C:/Rede_Sistema";
+                proc.StartInfo.CreateNoWindow = true;
+                proc.Start();
+                proc.WaitForExit();
+                int ExitCode = proc.ExitCode;
+                proc.Close();
+
+                Application.Exit();
+
+
+
+
+                // FAZ DOWNLOAD DA NOVA VERSÂO ==================================================
+
+                WebClient wc = new WebClient();
+                wc.DownloadFile("http://localhost:5000/att", "C:/rede_sistema/razor_software.rar");
+
+                
+
+                //Zenfox_Software_OO.atualizacao cmd = new Zenfox_Software_OO.atualizacao();
+                //List<Zenfox_Software_OO.atualizacao.Entidade> list = new List<Zenfox_Software_OO.atualizacao.Entidade>();//cmd.verifica_existencia_nova_atualizacao(new Zenfox_Software_OO.atualizacao.Entidade() { mac_addres = this.mac_addres });
+
+
+                //File.WriteAllBytes("C:\\rede_sistema\\razor.rar", list[0].arquivo);
+
+                //FileStream fs = new FileStream("C:\\rede_Sistema\\atualizacao.rar", FileMode.Create);
+                //fs.Write(list[0].arquivo, 0, 10000000);
+                //fs.Close();
+                //
+                //RarArchive archive = RarArchive.Open("C:\\Rede_Sistema\\atualizacao.rar");
+                //
+                //foreach (RarArchiveEntry item in archive.Entries)
+                //{
+                //    string path = Path.Combine("C:\\rede_sistema", Path.GetFileName(item.FilePath));
+                //    item.WriteToFile(path);
+                //}
+                //
 
             }
         }
@@ -251,6 +298,7 @@ namespace Zenfox_Software
         {
 
         }
+
 
         private void background_att_DoWork(object sender, DoWorkEventArgs e)
         {
@@ -263,14 +311,23 @@ namespace Zenfox_Software
             else
                 this.atualizacao_disponivel = false;
 
-            //this.atualizacao_disponivel = true;
+
+            //if (this.atualizacao_disponivel){
+            if (true)
+            {
+                
+                this.atualizacao_disponivel = true;
+            }
         }
 
         private void background_att_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
-            if (this.atualizacao_disponivel){
-                btn_att.Visible = false;
-            }else{
+            if (this.atualizacao_disponivel)
+            {
+                btn_att.Visible = true;
+            }
+            else
+            {
                 btn_att.Visible = false;
             }
         }
@@ -335,7 +392,8 @@ namespace Zenfox_Software
         }
 
 
-        private void timer3_Tick(object sender, EventArgs e){
+        private void timer3_Tick(object sender, EventArgs e)
+        {
             if (alert_message.Visible)
                 alert_message.Visible = false;
             else
@@ -343,7 +401,8 @@ namespace Zenfox_Software
         }
 
 
-        async Task<Boolean> GetMensagens_nao_lidas(){
+        async Task<Boolean> GetMensagens_nao_lidas()
+        {
 
             try
             {

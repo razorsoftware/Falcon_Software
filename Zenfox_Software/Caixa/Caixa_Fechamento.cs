@@ -217,6 +217,15 @@ namespace Zenfox_Software.caixa
                             if (txt_cheque.Text.Length > 0)
                                 _venda.cheque = Double.Parse(txt_cheque.Text);
 
+                            Double desconto = 0;
+                            if (txt_desconto_percentual.Text.Length > 0)
+                                desconto = venda.valor_total * (Convert.ToDouble(txt_desconto_percentual.Text) / 100);
+
+                            if (txt_desconto.Text.Length > 0)
+                                desconto = venda.valor_total - Convert.ToDouble(txt_desconto.Text);
+
+                            _venda.desconto = Math.Round(desconto,2, MidpointRounding.AwayFromZero);
+
                             Zenfox_Software_OO.Cadastros.Vendas cmd = new Zenfox_Software_OO.Cadastros.Vendas();
                             cmd.fecha_venda(_venda);
 

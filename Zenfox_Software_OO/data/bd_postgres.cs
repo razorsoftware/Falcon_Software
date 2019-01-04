@@ -3,6 +3,7 @@ using NpgsqlTypes;
 using System;
 using System.Collections.Generic;
 using System.Data;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -30,7 +31,10 @@ namespace Zenfox_Software_OO.data
 
         public void localdb()
         {
-            String localdb = System.IO.File.ReadAllText(@System.AppDomain.CurrentDomain.BaseDirectory.ToString() + "bd.txt");
+            String localdb = "PORT=5432;HOST=localhost";
+            if(File.Exists(@System.AppDomain.CurrentDomain.BaseDirectory.ToString() + "bd.txt"))
+                localdb = System.IO.File.ReadAllText(@System.AppDomain.CurrentDomain.BaseDirectory.ToString() + "bd.txt");
+
             this.ConnectionString = "DATABASE=razor_sat;Pooling=False;" + localdb + ";UID=razor_sat;Password=Pk192168@q2aw3@se4;";
 
         }

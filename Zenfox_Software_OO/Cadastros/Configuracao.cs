@@ -61,7 +61,8 @@ namespace Zenfox_Software_OO.Cadastros
                 item.valida_ncm = dr.GetBoolean(validar_ncm);
                 if(!dr.IsDBNull(sat))
                     item.sat = dr.GetBoolean(sat);
-                item.impressora_pula_linha = dr.GetBoolean(impressora_pula_impressao);
+                if(!dr.IsDBNull(impressora_pula_impressao))
+                    item.impressora_pula_linha = dr.GetBoolean(impressora_pula_impressao);
                 if (!dr.IsDBNull(acbr))
                     item.acbr = dr.GetString(acbr);
             }

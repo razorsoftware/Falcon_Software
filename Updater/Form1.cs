@@ -168,7 +168,7 @@ namespace Updater
                                 File.Create(arqui_bat).Close();
                                 TextWriter escrever = File.AppendText(arqui_bat);
                                 escrever.WriteLine("@echo off");
-                                escrever.WriteLine("msiexec /x {77508075-6CDE-45A9-BCCC-F1977588D0D8}");
+                                escrever.WriteLine("msiexec /x {1C72DCF2-AC6B-4B2D-BFCF-1B80E16865A0}");
 
 
                                 // File.Delete(arqui_bat);
@@ -264,7 +264,7 @@ namespace Updater
             {
 
                 Process proc = new Process();
-                proc.StartInfo.FileName = "Instalador_Trend_SAT.msi";
+                proc.StartInfo.FileName = "atualizacao.msi";
                 proc.StartInfo.WorkingDirectory = "C:/Rede_Sistema";
                 proc.StartInfo.CreateNoWindow = false;
                 proc.Start();
@@ -291,14 +291,14 @@ namespace Updater
             // Desinstalação do sistema
             if (this.step == 4)
             {
-                UninstallProgram("Instalador_Trend_SAT");
+                UninstallProgram("Razor");
                 this.step++;
             }
 
             // Valida que o programa não esta instalado
             if(this.step == 6)
             {
-                Boolean x = verifica_programa_instalado("Instalador_Trend_SAT");
+                Boolean x = verifica_programa_instalado("Razor");
                 if (x)
                     this.step = 4;
                 else
@@ -324,8 +324,8 @@ namespace Updater
                    // escrever.WriteLine("START Instalador_Trend_SAT");
 
                     escrever.WriteLine("@echo off");
-                    escrever.WriteLine("cd C:/Program Files (x86)/Default Company Name/Instalador_Trend_SAT/sistema");
-                    escrever.WriteLine("Start /b SIAV.exe");
+                    escrever.WriteLine("cd C:/Program Files (x86)/Razor/Razor");
+                    escrever.WriteLine("Start /b Zenfox_Software.exe");
 
                     // File.Delete(arqui_bat);
                     escrever.Close();
