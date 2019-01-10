@@ -595,6 +595,7 @@
     <Content Include="Paomedia-Small-N-Flat-Shop.ico" />
     <Content Include="procedimento_instalacao.txt" />
     <Content Include="icon.ico" />
+    <None Include="Resources\output-onlinepngtools.png" />
     <None Include="Resources\delete.png" />
     <None Include="Resources\001-atm1.png" />
     <None Include="Resources\002-atm-11.png" />
