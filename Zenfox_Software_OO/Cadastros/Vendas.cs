@@ -23,6 +23,7 @@ namespace Zenfox_Software_OO.Cadastros
         public Int32 usuario { get; set; }
         public Int32 vendedor { get; set; }
         public String xml { get; set; }
+        public String xml_cancelamento { get; set; }
         public List<Entidade_Vendas_Produtos> produtos { get; set; }
         public Boolean para_cancelamento { get; set; }
 
@@ -363,7 +364,8 @@ namespace Zenfox_Software_OO.Cadastros
             {
                 DateTime dt = DateTime.Now;
                 dt = dt.AddMinutes(-30);
-                x += " and data > '" + dt.ToString() + "' ";
+                x += " and data > @date";
+                sql.Comando.Parameters.AddWithValue("@date",NpgsqlTypes.NpgsqlDbType.TimestampTZ,dt.ToString());
             }
 
             if (item.data_inicial != null)
@@ -375,7 +377,7 @@ namespace Zenfox_Software_OO.Cadastros
                     x += " and data <= '" + item.data_final + "'";
 
             if (item.id > 0)
-                x += "and id = " + item.id;
+                x += " and id = " + item.id;
 
             sql.Comando.CommandText = x;
             IDataReader dr = sql.RetornaDados_v2();
@@ -411,6 +413,7 @@ namespace Zenfox_Software_OO.Cadastros
             //Int32 status = dr.GetOrdinal("status");
             Int32 valor_total = dr.GetOrdinal("valor_total");
             Int32 xml = dr.GetOrdinal("xml");
+            Int32 xml_cancelamento = dr.GetOrdinal("xml_cancelamento");
 
             while (dr.Read())
             {
@@ -418,6 +421,8 @@ namespace Zenfox_Software_OO.Cadastros
                 item.valor_total = dr.GetDouble(valor_total);
                 if (!dr.IsDBNull(xml))
                     item.xml = dr.GetString(xml);
+                if (!dr.IsDBNull(xml_cancelamento))
+                    item.xml_cancelamento = dr.GetString(xml_cancelamento);
             }
 
             sql.FechaConexao();

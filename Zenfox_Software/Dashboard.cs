@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json;
+﻿using ICSharpCode.SharpZipLib.Tar;
+using Newtonsoft.Json;
 using NUnrar.Archive;
 using System;
 using System.Collections.Generic;
@@ -16,6 +17,8 @@ using System.Net.Sockets;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+
+using System.IO.Compression;
 
 
 // BUG A RESOLVER NA FUNÇÂO DO BOTÂO btn_abrir_caixa_Click
@@ -142,7 +145,7 @@ namespace Zenfox_Software
             lbl_hora.Text = data.ToShortTimeString();
             lbl_data.Text = data.ToShortDateString();
 
-            if (ct > 600)
+            if (ct > 1000)
             {
                 ct = 0;
                 background_att.RunWorkerAsync();
@@ -217,7 +220,7 @@ namespace Zenfox_Software
             MessageBox.Show("Módulo ainda não disponível");
             //MessageBox.Show("Módulo em desenvolvimento");
         }
-        
+
 
         private void btn_att_Click(object sender, EventArgs e)
         {
@@ -226,12 +229,18 @@ namespace Zenfox_Software
 
             if (dr == DialogResult.Yes)
             {
+               
+
                 // Verifica se pastas e arquivos existem ========================================
                 if (!Directory.Exists("C:/Rede_Sistema"))
                     Directory.CreateDirectory("C:/Rede_Sistema");
 
-                if (File.Exists("C:/Rede_sistema/razor_software.rar"))
-                    File.Delete("C:/Rede_sistema/razor_software.rar");
+                if (File.Exists("C:/Rede_sistema/razor_software.zip"))
+                    File.Delete("C:/Rede_sistema/razor_software.zip");
+
+                if (File.Exists("C:/Rede_sistema/atualizacao.msi"))
+                    File.Delete("C:/Rede_sistema/atualizacao.msi");
+
 
                 string arqui_bat = "C:/Rede_Sistema/start_updater.bat";
                 if (!File.Exists(arqui_bat))
@@ -251,6 +260,12 @@ namespace Zenfox_Software
                     //Process.Start();
                 }
 
+
+                WebClient wc = new WebClient();
+                wc.DownloadFile("http://api.razorsoft.com.br/att", "C:/rede_sistema/razor_software.zip");
+
+                ZipFile.ExtractToDirectory("C:/rede_sistema/razor_software.zip", "C:/rede_sistema");
+                
                 Process proc = new Process();
                 proc.StartInfo.FileName = "start_updater.bat";
                 proc.StartInfo.WorkingDirectory = "C:/Rede_Sistema";
@@ -267,10 +282,7 @@ namespace Zenfox_Software
 
                 // FAZ DOWNLOAD DA NOVA VERSÂO ==================================================
 
-                WebClient wc = new WebClient();
-                wc.DownloadFile("http://localhost:5000/att", "C:/rede_sistema/razor_software.rar");
 
-                
 
                 //Zenfox_Software_OO.atualizacao cmd = new Zenfox_Software_OO.atualizacao();
                 //List<Zenfox_Software_OO.atualizacao.Entidade> list = new List<Zenfox_Software_OO.atualizacao.Entidade>();//cmd.verifica_existencia_nova_atualizacao(new Zenfox_Software_OO.atualizacao.Entidade() { mac_addres = this.mac_addres });
@@ -302,153 +314,149 @@ namespace Zenfox_Software
 
         private void background_att_DoWork(object sender, DoWorkEventArgs e)
         {
-            Zenfox_Software_OO.atualizacao cmd = new Zenfox_Software_OO.atualizacao();
-            List<Zenfox_Software_OO.atualizacao.Entidade> list = new List<Zenfox_Software_OO.atualizacao.Entidade>();//cmd.verifica_existencia_nova_atualizacao(new Zenfox_Software_OO.atualizacao.Entidade() { mac_addres = this.mac_addres });
-
-
-            if (list.Count > 0)
-                this.atualizacao_disponivel = true;
-            else
-                this.atualizacao_disponivel = false;
-
-
-            //if (this.atualizacao_disponivel){
-            if (true)
-            {
-                
-                this.atualizacao_disponivel = true;
-            }
-        }
-
-        private void background_att_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
-        {
-            if (this.atualizacao_disponivel)
-            {
-                btn_att.Visible = true;
-            }
-            else
-            {
-                btn_att.Visible = false;
-            }
-        }
-
-        private void produtosToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            Cadastros.Produto cmd = new Cadastros.Produto();
-            cmd.ShowDialog();
-        }
-
-        private void fornecedorToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            Cadastros.Fornecedor cmd = new Cadastros.Fornecedor();
-            cmd.ShowDialog();
-        }
-
-        private void categoriaToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void pictureBox2_Click(object sender, EventArgs e)
-        {
-            Zenfox_Software_OO.Impressora imp = new Zenfox_Software_OO.Impressora();
-            imp.imprime_crediario();
-        }
-
-        private void grupoDeProdutoToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            Zenfox_Software.tabelas_sistema.Grupo_produto cmd = new tabelas_sistema.Grupo_produto();
-            cmd.Show();
-        }
-
-        private void btn_contabilidade_Click(object sender, EventArgs e)
-        {
-            contabilidade.Enviar_XML cmd = new contabilidade.Enviar_XML();
-            cmd.ShowDialog();
-            btn_contabilidade.Visible = Zenfox_Software_OO.helper.retorna_fake();
-        }
-
-        private void calcularXMLToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            relatorios.contabilidade.Calcular_XML cmd = new relatorios.contabilidade.Calcular_XML();
-            cmd.ShowDialog();
-        }
-
-        private void produtosSemCategoriaToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            correcoes.produtos.Produtos_sem_categoria cmd = new correcoes.produtos.Produtos_sem_categoria();
-            cmd.ShowDialog();
-        }
-
-        private void alert_message_Click(object sender, EventArgs e)
-        {
-
-        }
-
-
-        private void timer_pisca_alerta_Tick(object sender, EventArgs e)
-        {
-
-        }
-
-
-        private void timer3_Tick(object sender, EventArgs e)
-        {
-            if (alert_message.Visible)
-                alert_message.Visible = false;
-            else
-                alert_message.Visible = true;
-        }
-
-
-        async Task<Boolean> GetMensagens_nao_lidas()
-        {
-
             try
             {
-                Boolean x = false;
                 HttpClient client = new HttpClient();
-                var json = new WebClient().DownloadString("http://api.agenciarazor.com.br/suporte/nao_lido");
+                var json = new WebClient().DownloadString("http://api.razorsoft.com.br/versao");
 
-                Person[] persons = JsonConvert.DeserializeObject<Person[]>(json);
-                if (persons.Length > 0)
+                if (json != "1.3.2")
+                    this.atualizacao_disponivel = true;
+                else
+                    this.atualizacao_disponivel = false;
+            }
+            catch { }
+        }
+
+
+            private void background_att_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+            {
+                if (this.atualizacao_disponivel)
                 {
-                    timer3.Enabled = true;
+                    btn_att.Visible = true;
                 }
                 else
                 {
-                    timer3.Enabled = false;
-                    alert_message.Visible = false;
+                    btn_att.Visible = false;
                 }
-
-                return x;
             }
-            catch
+
+            private void produtosToolStripMenuItem_Click(object sender, EventArgs e)
             {
-                return false;
+                Cadastros.Produto cmd = new Cadastros.Produto();
+                cmd.ShowDialog();
+            }
+
+            private void fornecedorToolStripMenuItem_Click(object sender, EventArgs e)
+            {
+                Cadastros.Fornecedor cmd = new Cadastros.Fornecedor();
+                cmd.ShowDialog();
+            }
+
+            private void categoriaToolStripMenuItem_Click(object sender, EventArgs e)
+            {
+
+            }
+
+            private void pictureBox2_Click(object sender, EventArgs e)
+            {
+                Zenfox_Software_OO.Impressora imp = new Zenfox_Software_OO.Impressora();
+                imp.imprime_crediario();
+            }
+
+            private void grupoDeProdutoToolStripMenuItem_Click(object sender, EventArgs e)
+            {
+                Zenfox_Software.tabelas_sistema.Grupo_produto cmd = new tabelas_sistema.Grupo_produto();
+                cmd.Show();
+            }
+
+            private void btn_contabilidade_Click(object sender, EventArgs e)
+            {
+                contabilidade.Enviar_XML cmd = new contabilidade.Enviar_XML();
+                cmd.ShowDialog();
+                btn_contabilidade.Visible = Zenfox_Software_OO.helper.retorna_fake();
+            }
+
+            private void calcularXMLToolStripMenuItem_Click(object sender, EventArgs e)
+            {
+                relatorios.contabilidade.Calcular_XML cmd = new relatorios.contabilidade.Calcular_XML();
+                cmd.ShowDialog();
+            }
+
+            private void produtosSemCategoriaToolStripMenuItem_Click(object sender, EventArgs e)
+            {
+                correcoes.produtos.Produtos_sem_categoria cmd = new correcoes.produtos.Produtos_sem_categoria();
+                cmd.ShowDialog();
+            }
+
+            private void alert_message_Click(object sender, EventArgs e)
+            {
+
+            }
+
+
+            private void timer_pisca_alerta_Tick(object sender, EventArgs e)
+            {
+
+            }
+
+
+            private void timer3_Tick(object sender, EventArgs e)
+            {
+                if (alert_message.Visible)
+                    alert_message.Visible = false;
+                else
+                    alert_message.Visible = true;
+            }
+
+
+            async Task<Boolean> GetMensagens_nao_lidas()
+            {
+
+                try
+                {
+                    Boolean x = false;
+                    HttpClient client = new HttpClient();
+                    var json = new WebClient().DownloadString("http://api.agenciarazor.com.br/suporte/nao_lido");
+
+                    Person[] persons = JsonConvert.DeserializeObject<Person[]>(json);
+                    if (persons.Length > 0)
+                    {
+                        timer3.Enabled = true;
+                    }
+                    else
+                    {
+                        timer3.Enabled = false;
+                        alert_message.Visible = false;
+                    }
+
+                    return x;
+                }
+                catch
+                {
+                    return false;
+                }
+            }
+
+            private void timer4_Tick(object sender, EventArgs e)
+            {
+                GetMensagens_nao_lidas();
+            }
+
+            private void pictureBox3_Click(object sender, EventArgs e)
+            {
+
+            }
+
+            private void alert_message_Click_1(object sender, EventArgs e)
+            {
+
             }
         }
-
-        private void timer4_Tick(object sender, EventArgs e)
+        public class Person
         {
-            GetMensagens_nao_lidas();
-        }
-
-        private void pictureBox3_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void alert_message_Click_1(object sender, EventArgs e)
-        {
-
+            public String cliente { get; set; }
+            public String data { get; set; }
+            public String resposta { get; set; }
+            public String mensagem { get; set; }
         }
     }
-    public class Person
-    {
-        public String cliente { get; set; }
-        public String data { get; set; }
-        public String resposta { get; set; }
-        public String mensagem { get; set; }
-    }
-}

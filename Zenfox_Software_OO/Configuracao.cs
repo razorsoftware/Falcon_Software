@@ -27,7 +27,8 @@ namespace Zenfox_Software_OO
             IDataReader dr = sql.RetornaDados_v2();
             
             while (dr.Read()){
-                impressora = dr.GetString(0);
+                if(!dr.IsDBNull(0))
+                    impressora = dr.GetString(0);
             }
 
             sql.FechaConexao();

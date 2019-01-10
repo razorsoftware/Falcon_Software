@@ -86,7 +86,15 @@ namespace Zenfox_Software.Gerenciamento
             String xml = "SAT.ImprimirExtratoVenda(\"" + item.xml + "\");";
             System.IO.File.WriteAllText("C:/Rede_Sistema/ENT.txt", xml.Replace("\\\"", "'"));
 
-            Thread.Sleep(5000);
+            Thread.Sleep(3000);
+
+            File.Delete("C:/Rede_Sistema/sai.txt");
+
+
+            xml = "SAT.ImprimirExtratoCancelamento(\"" + item.xml_cancelamento + "\");";
+            System.IO.File.WriteAllText("C:/Rede_Sistema/ENT.txt", xml.Replace("\\\"", "'"));
+
+            Thread.Sleep(3000);
 
             File.Delete("C:/Rede_Sistema/sai.txt");
         }

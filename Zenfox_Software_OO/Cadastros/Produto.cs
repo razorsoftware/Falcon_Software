@@ -146,7 +146,7 @@ namespace Zenfox_Software_OO.Cadastros
             sql.Comando = new Npgsql.NpgsqlCommand();
 
             StringBuilder sb = new StringBuilder();
-            sb.Append("select id,data_cadastro,nome,estoque,estoque_minimo,valor_compra,valor_venda,(estoque * valor_venda) as valor_total,ean,ncm,cfop from produto where 1 = 1 ");
+            sb.Append("select id,data_cadastro,nome,estoque,estoque_minimo,valor_compra,valor_venda,(estoque * valor_venda) as valor_total,ean,ncm,cfop from produto where status = true ");
 
             if (item.estoque_abaixo_minimo > 0)
                 sb.Append(" and estoque < estoque_minimo ");
@@ -184,7 +184,7 @@ namespace Zenfox_Software_OO.Cadastros
             sql.Comando = new Npgsql.NpgsqlCommand();
 
             StringBuilder sb = new StringBuilder();
-            sb.Append("select id,data_cadastro,nome,estoque,estoque_minimo,valor_compra,valor_venda,(estoque * valor_venda) as valor_total,ean,ncm,cfop from produto where 1 = 1 ");
+            sb.Append("select id,data_cadastro,nome,estoque,estoque_minimo,valor_compra,valor_venda,(estoque * valor_venda) as valor_total,ean,ncm,cfop from produto where status = true ");
 
             if (item.estoque_abaixo_minimo > 0)
                 sb.Append(" and estoque < estoque_minimo ");
@@ -294,6 +294,23 @@ namespace Zenfox_Software_OO.Cadastros
             sql.FechaConexao();
         }
 
+
+        public void apaga(Int32 id)
+        {
+            data.bd_postgres sql = new data.bd_postgres();
+            sql.localdb();
+            sql.Comando = new Npgsql.NpgsqlCommand();
+
+            
+            sql.Comando.Parameters.AddWithValue("@id", id);
+            
+            sql.Comando.CommandText = "update produto set status = false where id = @id ";
+            sql.AbrirConexao();
+            sql.ExecutaComando_v2();
+            sql.FechaConexao();
+        }
+
+
         public Entidade_Produto seleciona_totais_estoque(Entidade_Produto item)
         {
 
@@ -303,7 +320,7 @@ namespace Zenfox_Software_OO.Cadastros
             sql.Comando = new Npgsql.NpgsqlCommand();
             StringBuilder sb = new StringBuilder();
 
-            sb.Append("select sum(estoque),sum(valor_venda * estoque) from produto where 1 = 1 ");
+            sb.Append("select sum(estoque),sum(valor_venda * estoque) from produto where status = true ");
 
             if (item.estoque_abaixo_minimo > 0)
                 sb.Append(" and estoque < estoque_minimo ");

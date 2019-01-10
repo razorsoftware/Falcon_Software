@@ -289,6 +289,13 @@ namespace Zenfox_Software.Cadastros
 
         private void button2_Click(object sender, EventArgs e)
         {
+            if (MessageBox.Show("Deseja realmente excluir este produto ?", "Confirmar", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1) == System.Windows.Forms.DialogResult.Yes)
+            {
+                Zenfox_Software_OO.Cadastros.Produto cmd = new Zenfox_Software_OO.Cadastros.Produto();
+                cmd.apaga(this.id);
+                MessageBox.Show("Produto excluido com sucesso !");
+                this.Close();
+            }
 
         }
 

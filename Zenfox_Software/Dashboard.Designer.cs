@@ -373,7 +373,7 @@
             this.groupBox1.Size = new System.Drawing.Size(258, 216);
             this.groupBox1.TabIndex = 27;
             this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Notas da Atualização V1.0.3";
+            this.groupBox1.Text = "Notas da Atualização V1.3.1";
             // 
             // label6
             // 
