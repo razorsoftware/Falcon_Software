@@ -65,7 +65,10 @@
             this.button4 = new System.Windows.Forms.Button();
             this.btn_minimizar = new System.Windows.Forms.Button();
             this.btn_fechar = new System.Windows.Forms.Button();
-            this.button6 = new System.Windows.Forms.Button();
+            this.btn_balanca = new System.Windows.Forms.Button();
+            this.button9 = new System.Windows.Forms.Button();
+            this.lbl_cpf = new System.Windows.Forms.Label();
+            this.button10 = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.groupBox6.SuspendLayout();
             this.groupBox5.SuspendLayout();
@@ -86,10 +89,10 @@
             this.panel1.Controls.Add(this.groupBox5);
             this.panel1.Controls.Add(this.groupBox4);
             this.panel1.Controls.Add(this.groupBox3);
-            this.panel1.Location = new System.Drawing.Point(9, 128);
+            this.panel1.Location = new System.Drawing.Point(9, 174);
             this.panel1.Margin = new System.Windows.Forms.Padding(2);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(507, 360);
+            this.panel1.Size = new System.Drawing.Size(507, 314);
             this.panel1.TabIndex = 0;
             this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
             // 
@@ -97,7 +100,7 @@
             // 
             this.groupBox6.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.groupBox6.Controls.Add(this.txt_descricao_produto);
-            this.groupBox6.Location = new System.Drawing.Point(4, 251);
+            this.groupBox6.Location = new System.Drawing.Point(4, 205);
             this.groupBox6.Margin = new System.Windows.Forms.Padding(2);
             this.groupBox6.Name = "groupBox6";
             this.groupBox6.Padding = new System.Windows.Forms.Padding(2);
@@ -123,7 +126,7 @@
             // 
             this.groupBox5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.groupBox5.Controls.Add(this.txt_valor_produto);
-            this.groupBox5.Location = new System.Drawing.Point(256, 307);
+            this.groupBox5.Location = new System.Drawing.Point(256, 261);
             this.groupBox5.Margin = new System.Windows.Forms.Padding(2);
             this.groupBox5.Name = "groupBox5";
             this.groupBox5.Padding = new System.Windows.Forms.Padding(2);
@@ -152,7 +155,7 @@
             // 
             this.groupBox4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.groupBox4.Controls.Add(this.txt_quantidade);
-            this.groupBox4.Location = new System.Drawing.Point(2, 307);
+            this.groupBox4.Location = new System.Drawing.Point(2, 261);
             this.groupBox4.Margin = new System.Windows.Forms.Padding(2);
             this.groupBox4.Name = "groupBox4";
             this.groupBox4.Padding = new System.Windows.Forms.Padding(2);
@@ -178,7 +181,7 @@
             this.groupBox3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.groupBox3.Controls.Add(this.btn_search);
             this.groupBox3.Controls.Add(this.txt_codigo_barras);
-            this.groupBox3.Location = new System.Drawing.Point(2, 195);
+            this.groupBox3.Location = new System.Drawing.Point(2, 149);
             this.groupBox3.Margin = new System.Windows.Forms.Padding(2);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Padding = new System.Windows.Forms.Padding(2);
@@ -514,10 +517,10 @@
             this.button5.Cursor = System.Windows.Forms.Cursors.Hand;
             this.button5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button5.ImageAlign = System.Drawing.ContentAlignment.BottomLeft;
-            this.button5.Location = new System.Drawing.Point(409, 492);
+            this.button5.Location = new System.Drawing.Point(401, 492);
             this.button5.Margin = new System.Windows.Forms.Padding(2);
             this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(107, 43);
+            this.button5.Size = new System.Drawing.Size(115, 43);
             this.button5.TabIndex = 452;
             this.button5.Text = "Fechar Caixa";
             this.button5.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -588,23 +591,69 @@
             this.btn_fechar.UseVisualStyleBackColor = true;
             this.btn_fechar.Click += new System.EventHandler(this.btn_fechar_Click);
             // 
-            // button6
+            // btn_balanca
             // 
-            this.button6.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.button6.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button6.BackgroundImage")));
-            this.button6.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.button6.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.button6.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button6.ImageAlign = System.Drawing.ContentAlignment.BottomLeft;
-            this.button6.Location = new System.Drawing.Point(149, 492);
-            this.button6.Margin = new System.Windows.Forms.Padding(2);
-            this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(107, 43);
-            this.button6.TabIndex = 453;
-            this.button6.Text = "Balança";
-            this.button6.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.button6.UseVisualStyleBackColor = true;
-            this.button6.Click += new System.EventHandler(this.button6_Click_1);
+            this.btn_balanca.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.btn_balanca.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btn_balanca.BackgroundImage")));
+            this.btn_balanca.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.btn_balanca.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btn_balanca.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_balanca.ImageAlign = System.Drawing.ContentAlignment.BottomLeft;
+            this.btn_balanca.Location = new System.Drawing.Point(149, 539);
+            this.btn_balanca.Margin = new System.Windows.Forms.Padding(2);
+            this.btn_balanca.Name = "btn_balanca";
+            this.btn_balanca.Size = new System.Drawing.Size(111, 43);
+            this.btn_balanca.TabIndex = 453;
+            this.btn_balanca.Text = "Balança";
+            this.btn_balanca.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btn_balanca.UseVisualStyleBackColor = true;
+            this.btn_balanca.Click += new System.EventHandler(this.button6_Click_1);
+            // 
+            // button9
+            // 
+            this.button9.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.button9.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button9.BackgroundImage")));
+            this.button9.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.button9.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.button9.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button9.ImageAlign = System.Drawing.ContentAlignment.BottomLeft;
+            this.button9.Location = new System.Drawing.Point(149, 492);
+            this.button9.Margin = new System.Windows.Forms.Padding(2);
+            this.button9.Name = "button9";
+            this.button9.Size = new System.Drawing.Size(111, 43);
+            this.button9.TabIndex = 454;
+            this.button9.Text = "Incluir CPF";
+            this.button9.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.button9.UseVisualStyleBackColor = true;
+            this.button9.Click += new System.EventHandler(this.button9_Click_1);
+            // 
+            // lbl_cpf
+            // 
+            this.lbl_cpf.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F);
+            this.lbl_cpf.Location = new System.Drawing.Point(15, 128);
+            this.lbl_cpf.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lbl_cpf.Name = "lbl_cpf";
+            this.lbl_cpf.Size = new System.Drawing.Size(498, 44);
+            this.lbl_cpf.TabIndex = 455;
+            this.lbl_cpf.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // button10
+            // 
+            this.button10.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.button10.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button10.BackgroundImage")));
+            this.button10.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.button10.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.button10.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button10.ImageAlign = System.Drawing.ContentAlignment.BottomLeft;
+            this.button10.Location = new System.Drawing.Point(401, 539);
+            this.button10.Margin = new System.Windows.Forms.Padding(2);
+            this.button10.Name = "button10";
+            this.button10.Size = new System.Drawing.Size(115, 43);
+            this.button10.TabIndex = 456;
+            this.button10.Text = "Configurações";
+            this.button10.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.button10.UseVisualStyleBackColor = true;
+            this.button10.Click += new System.EventHandler(this.button10_Click_1);
             // 
             // Caixa
             // 
@@ -613,7 +662,10 @@
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1059, 655);
             this.ControlBox = false;
-            this.Controls.Add(this.button6);
+            this.Controls.Add(this.button10);
+            this.Controls.Add(this.lbl_cpf);
+            this.Controls.Add(this.button9);
+            this.Controls.Add(this.btn_balanca);
             this.Controls.Add(this.button5);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.lbl_dia_semana);
@@ -696,6 +748,9 @@
         private System.Windows.Forms.Button button5;
         private System.Windows.Forms.Button button8;
         private System.Windows.Forms.Button button7;
-        private System.Windows.Forms.Button button6;
+        private System.Windows.Forms.Button btn_balanca;
+        private System.Windows.Forms.Button button9;
+        private System.Windows.Forms.Label lbl_cpf;
+        private System.Windows.Forms.Button button10;
     }
 }

@@ -463,9 +463,9 @@ namespace Zenfox_Software.Properties {
         /// <summary>
         ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap money {
+        internal static System.Drawing.Bitmap logo_nh {
             get {
-                object obj = ResourceManager.GetObject("money", resourceCulture);
+                object obj = ResourceManager.GetObject("logo_nh", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -473,9 +473,9 @@ namespace Zenfox_Software.Properties {
         /// <summary>
         ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap output_onlinepngtools {
+        internal static System.Drawing.Bitmap money {
             get {
-                object obj = ResourceManager.GetObject("output-onlinepngtools", resourceCulture);
+                object obj = ResourceManager.GetObject("money", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

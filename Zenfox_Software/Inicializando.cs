@@ -560,6 +560,55 @@ namespace Zenfox_Software
         //        }
 
 
+        /*
+         * 
+status: [pago,cancelado]
+tipo [Despesa fixas(valor fixo cobrado todos os mêses), despesa variavel (valor variavel)]
+tipo_emissor:[Cliente, fornecedor]
+id_emissor: 
+descrição: 
+data_criação
+data_vencimento: 
+
+
+# detalhamento 
+
+id_conta
+n_duplicata
+status [aberto,pago]
+data_vencimento
+valor
+
+
+
+
+
+
+
+
+
+
+CREATE TABLE configuracao_caixa
+(
+configuracao_balanca smallint DEFAULT 0,
+exibir_balanca_pdv boolean,
+quantidade_caracteres_peso smallint
+);
+
+insert into configuracao_caixa (configuracao_balanca,exibir_balanca_pdv,quantidade_caracteres_peso) values(1,false,5);
+
+alter table vendas_itens alter column quantidade type Double precision;
+
+alter table produto add column codigo_balanca integer;
+
+drop table configuracao_caixa
+
+
+
+
+         * */
+
+
         private void label1_Click(object sender, EventArgs e)
         {
 

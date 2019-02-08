@@ -12,6 +12,7 @@ namespace Zenfox_Software_OO.Cadastros
     {
 
         public Int32 id { get; set; }
+        public String codigo_balanca { get; set; }
         public Int32 fornecedor { get; set; }
         public Int32 grupo_produto { get; set; }
         public Int32 unidade_medida { get; set; }
@@ -49,10 +50,24 @@ namespace Zenfox_Software_OO.Cadastros
             sql.localdb();
             sql.AbrirConexao();
             sql.Comando = new Npgsql.NpgsqlCommand();
-            sql.Comando.CommandText = "select * from produto where id = " + item.id + " or ean = '" + item.ean + "'";
+            StringBuilder sb = new StringBuilder();
+
+            sb.AppendLine("select * from produto where 1 = 1 ");
+
+            if (item.id > 0)
+                sb.AppendLine("and id = " + item.id + " ");
+            if (item.ean != null)
+                if (item.ean.Length > 0)
+                    sb.AppendLine(" and ean = '" + item.ean + "' ");
+            if (item.codigo_balanca != null)
+                if (item.codigo_balanca.Length > 0)
+                    sb.AppendLine(" and codigo_balanca = '" + item.codigo_balanca + "' ");
+
+            sql.Comando.CommandText = sb.ToString();
             IDataReader dr = sql.RetornaDados_v2();
 
             Int32 id = dr.GetOrdinal("id");
+            Int32 codigo_balanca = dr.GetOrdinal("codigo_balanca");
             Int32 fornecedor = dr.GetOrdinal("fornecedor");
             Int32 xnome = dr.GetOrdinal("nome");
             Int32 data_cadastro = dr.GetOrdinal("data_cadastro");
@@ -103,6 +118,8 @@ namespace Zenfox_Software_OO.Cadastros
                 item.estoque = dr.GetDouble(estoque);
                 item.estoque_minimo = dr.GetInt32(estoque_minimo);
                 item.estoque_maximo = dr.GetInt32(estoque_maximo);
+                if (!dr.IsDBNull(codigo_balanca))
+                    item.codigo_balanca = dr.GetInt32(codigo_balanca).ToString();
             }
 
             sql.FechaConexao();
@@ -230,12 +247,13 @@ namespace Zenfox_Software_OO.Cadastros
 
             if (item.id > 0)
             {
-                sb.AppendLine("update produto set unidade_medida = @unidade_medida, fornecedor=@fornecedor,nome=@nome,ean=@ean,valor_compra=@valor_compra,valor_venda=@valor_venda,grupo_produto = @grupo_produto");
+                sb.AppendLine("update produto set codigo_balanca = @codigo_balanca,  unidade_medida = @unidade_medida, fornecedor=@fornecedor,nome=@nome,ean=@ean,valor_compra=@valor_compra,valor_venda=@valor_venda,grupo_produto = @grupo_produto");
                 sb.AppendLine(",valor_atacado=@valor_atacado,margem=@margem,margem_atacado=@margem_atacado,cfop=@cfop,ncm=@ncm,estoque=@estoque,estoque_minimo=@estoque_minimo");
                 sb.AppendLine(",estoque_maximo=@estoque_maximo where id = @id");
 
                 sql.Comando.Parameters.AddWithValue("@id", item.id);
 
+                sql.Comando.Parameters.AddWithValue("@codigo_balanca", NpgsqlTypes.NpgsqlDbType.Integer, item.codigo_balanca);
                 sql.Comando.Parameters.AddWithValue("@unidade_medida", item.unidade_medida);
                 sql.Comando.Parameters.AddWithValue("@fornecedor", item.fornecedor);
                 sql.Comando.Parameters.AddWithValue("@grupo_produto", item.grupo_produto);
@@ -267,10 +285,11 @@ namespace Zenfox_Software_OO.Cadastros
                 //        ?, ?, ?, ?, ?, ?, ?, 
                 //        ?, ?);
 
-                sb.AppendLine("INSERT INTO produto(grupo_produto,unidade_medida,fornecedor,nome,ean,valor_compra,valor_venda,valor_atacado,margem,margem_atacado,cfop,ncm,estoque,estoque_minimo,estoque_maximo)");
-                sb.AppendLine("VALUES (@grupo_produto,@unidade_medida,@fornecedor,@nome,@ean,@valor_compra,@valor_venda,@valor_atacado,@margem,@margem_atacado,@cfop,@ncm,@estoque,@estoque_minimo,@estoque_maximo)");
+                sb.AppendLine("INSERT INTO produto(codigo_balanca,grupo_produto,unidade_medida,fornecedor,nome,ean,valor_compra,valor_venda,valor_atacado,margem,margem_atacado,cfop,ncm,estoque,estoque_minimo,estoque_maximo)");
+                sb.AppendLine("VALUES (@codigo_balanca, @grupo_produto,@unidade_medida,@fornecedor,@nome,@ean,@valor_compra,@valor_venda,@valor_atacado,@margem,@margem_atacado,@cfop,@ncm,@estoque,@estoque_minimo,@estoque_maximo)");
 
                 sql.Comando.Parameters.AddWithValue("@grupo_produto", item.grupo_produto);
+                sql.Comando.Parameters.AddWithValue("@codigo_balanca", NpgsqlTypes.NpgsqlDbType.Integer, item.codigo_balanca);
                 sql.Comando.Parameters.AddWithValue("@unidade_medida", item.unidade_medida);
                 sql.Comando.Parameters.AddWithValue("@fornecedor", item.fornecedor);
                 sql.Comando.Parameters.AddWithValue("@nome", item.nome_produto);
@@ -301,9 +320,9 @@ namespace Zenfox_Software_OO.Cadastros
             sql.localdb();
             sql.Comando = new Npgsql.NpgsqlCommand();
 
-            
+
             sql.Comando.Parameters.AddWithValue("@id", id);
-            
+
             sql.Comando.CommandText = "update produto set status = false where id = @id ";
             sql.AbrirConexao();
             sql.ExecutaComando_v2();

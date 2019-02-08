@@ -21,6 +21,7 @@ namespace Zenfox_Software.caixa
         public Double valor_cheque = 0;
         public Double valor_retirada_de_caixa = 0;
         public Double valor_suprimento_caixa = 0;
+        public Double valor_desconto = 0;
         public Double valor_cancelado = 0;
         public Double crediario_vendido = 0;
         public Double crediario_recebido = 0;
@@ -111,6 +112,10 @@ namespace Zenfox_Software.caixa
             valor_liquido += vendas.cheque;
             this.valor_cheque = vendas.cheque;
 
+            if (vendas.desconto > 0)
+                lbl_total_desconto.Text = "R$ " + vendas.desconto.ToString("F2");
+            this.valor_desconto = vendas.desconto;
+
             Double total_cancelado = cmd_vendas.seleciona_totais_cancelado(new Zenfox_Software_OO.Cadastros.Entidade_Vendas() { caixa = this.id_caixa, data_inicial = "", data_final = "" }).valor_total;
             //valor_liquido += total_cancelado;
 
@@ -129,13 +134,15 @@ namespace Zenfox_Software.caixa
 
             this.valor_suprimento_caixa = Zenfox_Software_OO.Caixa.Caixa.seleciona_acrescento_caixa();
             lbl_total_suprimento.Text = "R$ " + this.valor_suprimento_caixa.ToString("F2");
-            
+
             // Totais Gerais =====================================
+
+            lbl_total_vendas.Text = "R$ " + (this.valor_dinheiro + this.valor_debito + this.valor_credito + this.valor_cheque + this.crediario_recebido).ToString("F2");
 
             if (this.valor_liquido > 0)
                 lbl_total_bruto.Text = "R$ " + valor_liquido.ToString("F2");
 
-            lbl_total_liquido.Text = "R$ " + ((this.valor_liquido + this.valor_suprimento_caixa) - (total_cancelado + this.valor_retirada_de_caixa)).ToString("F2");
+            lbl_total_liquido.Text = "R$ " + ((this.valor_liquido + this.valor_suprimento_caixa) - (this.valor_retirada_de_caixa + this.valor_desconto)).ToString("F2");
 
             lbl_total_geral.Text = lbl_total_liquido.Text;
 

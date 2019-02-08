@@ -83,6 +83,7 @@
     <Compile Include="Cadastros\Usuario.cs" />
     <Compile Include="Cadastros\Vendas.cs" />
     <Compile Include="Caixa\Caixa.cs" />
+    <Compile Include="Caixa\Configuracao.cs" />
     <Compile Include="Caixa\Crediario.cs" />
     <Compile Include="Caixa\Estoque.cs" />
     <Compile Include="CDSImprimeTexto.cs" />

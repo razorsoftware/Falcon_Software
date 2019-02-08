@@ -540,10 +540,10 @@
             // pictureBox3
             // 
             this.pictureBox3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.pictureBox3.Image = global::Zenfox_Software.Properties.Resources.output_onlinepngtools;
-            this.pictureBox3.Location = new System.Drawing.Point(791, 461);
+            this.pictureBox3.Image = global::Zenfox_Software.Properties.Resources.logo_nh;
+            this.pictureBox3.Location = new System.Drawing.Point(826, 472);
             this.pictureBox3.Name = "pictureBox3";
-            this.pictureBox3.Size = new System.Drawing.Size(295, 92);
+            this.pictureBox3.Size = new System.Drawing.Size(260, 81);
             this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox3.TabIndex = 32;
             this.pictureBox3.TabStop = false;

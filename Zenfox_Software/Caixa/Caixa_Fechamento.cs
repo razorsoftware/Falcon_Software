@@ -16,6 +16,7 @@ namespace Zenfox_Software.caixa
         Zenfox_Software_OO.Cadastros.Entidade_Vendas venda = new Zenfox_Software_OO.Cadastros.Entidade_Vendas();
         Zenfox_Software_OO.Cadastros.Vendas cmd_venda = new Zenfox_Software_OO.Cadastros.Vendas();
         public Boolean vendido = false;
+        String cpf = "";
         Int32 id_usuario = 0;
 
         public void verifica_key_up_atalho(object sender, KeyEventArgs e)
@@ -29,7 +30,7 @@ namespace Zenfox_Software.caixa
         }
 
 
-        public Caixa_Fechamento(Int32 id,Int32 id_usuario)
+        public Caixa_Fechamento(Int32 id,Int32 id_usuario,String cpf)
         {
             InitializeComponent();
 
@@ -45,6 +46,7 @@ namespace Zenfox_Software.caixa
 
             txt_dinheiro.Select();
             lbl_nome_operador.Text = Zenfox_Software_OO.Cadastros.Usuario.seleciona_nome(new Zenfox_Software_OO.Cadastros.Entidade_Usuario() { id = this.id_usuario });
+            this.cpf = cpf;
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -129,7 +131,7 @@ namespace Zenfox_Software.caixa
                             string_sat += acbr.inicia_montagem(empresa.versao_cupom);
                             string_sat += acbr.identificacao(empresa.software_house, empresa.codigo_vinculacao, "1");
                             string_sat += acbr.emitente(empresa.cnpj.Replace(".", "").Replace(" / ", "").Replace(" - ", "").ToString(), empresa.ie, "");
-                            string_sat += acbr.destinatario("", "");
+                            string_sat += acbr.destinatario(this.cpf,"");
 
                             Zenfox_Software_OO.Cadastros.Vendas cmd_vendas = new Zenfox_Software_OO.Cadastros.Vendas();
                             List<Zenfox_Software_OO.Cadastros.Entidade_Vendas> list = cmd_vendas.seleciona_detalhamento(new Zenfox_Software_OO.Cadastros.Entidade_Vendas() { id = this.venda.id });
@@ -188,7 +190,16 @@ namespace Zenfox_Software.caixa
                                     pagamento++;
                                 }
 
+                            // Pagamento Cheque =============================
+                            if (txt_cheque.Text.Length > 0)
+                                if (Double.Parse(txt_cheque.Text) > 0)
+                                {
+                                    string_sat += acbr.formas_pagamento(pagamento, 2, Double.Parse(txt_cheque.Text));
+                                    pagamento++;
+                                }
 
+
+                            // CODIGO 5 CREDITO EM LOJA
 
                             string_sat += acbr.dados_adicionais("");
                             x = acbr.emite_sat(venda.id, string_sat);

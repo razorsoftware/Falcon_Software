@@ -33,6 +33,12 @@
             this.label2 = new System.Windows.Forms.Label();
             this.grid = new System.Windows.Forms.DataGridView();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.label19 = new System.Windows.Forms.Label();
+            this.lbl_crediario_vendido = new System.Windows.Forms.Label();
+            this.lbl_total_vendas = new System.Windows.Forms.Label();
+            this.label16 = new System.Windows.Forms.Label();
+            this.label15 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
             this.lbl_total_liquido = new System.Windows.Forms.Label();
             this.lbl_total_bruto = new System.Windows.Forms.Label();
             this.lbl_total_desconto = new System.Windows.Forms.Label();
@@ -60,12 +66,6 @@
             this.lbl_total_geral = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.button2 = new System.Windows.Forms.Button();
-            this.label6 = new System.Windows.Forms.Label();
-            this.label15 = new System.Windows.Forms.Label();
-            this.label16 = new System.Windows.Forms.Label();
-            this.label17 = new System.Windows.Forms.Label();
-            this.lbl_crediario_vendido = new System.Windows.Forms.Label();
-            this.label19 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.grid)).BeginInit();
             this.panel1.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -75,7 +75,7 @@
             // button1
             // 
             this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.button1.Location = new System.Drawing.Point(764, 405);
+            this.button1.Location = new System.Drawing.Point(859, 405);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(118, 23);
             this.button1.TabIndex = 0;
@@ -90,7 +90,7 @@
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.Location = new System.Drawing.Point(12, 9);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(870, 23);
+            this.label2.Size = new System.Drawing.Size(965, 23);
             this.label2.TabIndex = 376;
             this.label2.Text = "Fechamento de Caixa";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -117,7 +117,7 @@
             this.grid.RowHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.grid.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders;
             this.grid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.grid.Size = new System.Drawing.Size(453, 253);
+            this.grid.Size = new System.Drawing.Size(542, 253);
             this.grid.TabIndex = 377;
             // 
             // panel1
@@ -129,7 +129,7 @@
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel1.Controls.Add(this.label19);
             this.panel1.Controls.Add(this.lbl_crediario_vendido);
-            this.panel1.Controls.Add(this.label17);
+            this.panel1.Controls.Add(this.lbl_total_vendas);
             this.panel1.Controls.Add(this.label16);
             this.panel1.Controls.Add(this.label15);
             this.panel1.Controls.Add(this.label6);
@@ -157,8 +157,71 @@
             this.panel1.Controls.Add(this.label1);
             this.panel1.Location = new System.Drawing.Point(12, 47);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(396, 381);
+            this.panel1.Size = new System.Drawing.Size(399, 381);
             this.panel1.TabIndex = 378;
+            // 
+            // label19
+            // 
+            this.label19.Location = new System.Drawing.Point(161, 139);
+            this.label19.Name = "label19";
+            this.label19.Size = new System.Drawing.Size(230, 13);
+            this.label19.TabIndex = 403;
+            this.label19.Text = "R$ 0.00";
+            this.label19.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // lbl_crediario_vendido
+            // 
+            this.lbl_crediario_vendido.Location = new System.Drawing.Point(161, 118);
+            this.lbl_crediario_vendido.Name = "lbl_crediario_vendido";
+            this.lbl_crediario_vendido.Size = new System.Drawing.Size(230, 13);
+            this.lbl_crediario_vendido.TabIndex = 402;
+            this.lbl_crediario_vendido.Text = "R$ 0.00";
+            this.lbl_crediario_vendido.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // lbl_total_vendas
+            // 
+            this.lbl_total_vendas.Location = new System.Drawing.Point(117, 304);
+            this.lbl_total_vendas.Name = "lbl_total_vendas";
+            this.lbl_total_vendas.Size = new System.Drawing.Size(274, 18);
+            this.lbl_total_vendas.TabIndex = 401;
+            this.lbl_total_vendas.Text = "R$ 0.00";
+            this.lbl_total_vendas.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // label16
+            // 
+            this.label16.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label16.Image = global::Zenfox_Software.Properties.Resources._005_money_bag;
+            this.label16.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.label16.Location = new System.Drawing.Point(3, 303);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(108, 21);
+            this.label16.TabIndex = 400;
+            this.label16.Text = "Total Vendas";
+            this.label16.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // label15
+            // 
+            this.label15.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label15.Image = global::Zenfox_Software.Properties.Resources._004_check;
+            this.label15.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.label15.Location = new System.Drawing.Point(3, 135);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(140, 21);
+            this.label15.TabIndex = 399;
+            this.label15.Text = "Crediário Recebido";
+            this.label15.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // label6
+            // 
+            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.Image = global::Zenfox_Software.Properties.Resources._004_check;
+            this.label6.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.label6.Location = new System.Drawing.Point(3, 114);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(140, 21);
+            this.label6.TabIndex = 398;
+            this.label6.Text = "Crediário Vendido";
+            this.label6.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // lbl_total_liquido
             // 
@@ -397,7 +460,7 @@
             this.groupBox1.Controls.Add(this.grid);
             this.groupBox1.Location = new System.Drawing.Point(417, 47);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(465, 278);
+            this.groupBox1.Size = new System.Drawing.Size(554, 278);
             this.groupBox1.TabIndex = 380;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Detalhamento de Vendas do Caixa";
@@ -407,7 +470,7 @@
             this.groupBox2.Controls.Add(this.lbl_total_geral);
             this.groupBox2.Location = new System.Drawing.Point(494, 331);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(388, 67);
+            this.groupBox2.Size = new System.Drawing.Size(483, 67);
             this.groupBox2.TabIndex = 381;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Valor de Fechamento";
@@ -420,7 +483,7 @@
             this.lbl_total_geral.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_total_geral.Location = new System.Drawing.Point(6, 16);
             this.lbl_total_geral.Name = "lbl_total_geral";
-            this.lbl_total_geral.Size = new System.Drawing.Size(376, 48);
+            this.lbl_total_geral.Size = new System.Drawing.Size(471, 48);
             this.lbl_total_geral.TabIndex = 0;
             this.lbl_total_geral.Text = "R$ 0.00";
             this.lbl_total_geral.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -433,13 +496,13 @@
             this.label8.Image = global::Zenfox_Software.Properties.Resources.cashier__1_;
             this.label8.Location = new System.Drawing.Point(420, 335);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(68, 56);
+            this.label8.Size = new System.Drawing.Size(74, 56);
             this.label8.TabIndex = 1;
             // 
             // button2
             // 
             this.button2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.button2.Location = new System.Drawing.Point(411, 405);
+            this.button2.Location = new System.Drawing.Point(494, 405);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(118, 23);
             this.button2.TabIndex = 382;
@@ -447,74 +510,11 @@
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
-            // label6
-            // 
-            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Image = global::Zenfox_Software.Properties.Resources._004_check;
-            this.label6.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.label6.Location = new System.Drawing.Point(3, 114);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(140, 21);
-            this.label6.TabIndex = 398;
-            this.label6.Text = "Crediário Vendido";
-            this.label6.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // label15
-            // 
-            this.label15.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label15.Image = global::Zenfox_Software.Properties.Resources._004_check;
-            this.label15.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.label15.Location = new System.Drawing.Point(3, 135);
-            this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(140, 21);
-            this.label15.TabIndex = 399;
-            this.label15.Text = "Crediário Recebido";
-            this.label15.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // label16
-            // 
-            this.label16.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label16.Image = global::Zenfox_Software.Properties.Resources._005_money_bag;
-            this.label16.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.label16.Location = new System.Drawing.Point(3, 303);
-            this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(108, 21);
-            this.label16.TabIndex = 400;
-            this.label16.Text = "Total Vendas";
-            this.label16.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // label17
-            // 
-            this.label17.Location = new System.Drawing.Point(117, 304);
-            this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(274, 18);
-            this.label17.TabIndex = 401;
-            this.label17.Text = "R$ 0.00";
-            this.label17.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // lbl_crediario_vendido
-            // 
-            this.lbl_crediario_vendido.Location = new System.Drawing.Point(161, 118);
-            this.lbl_crediario_vendido.Name = "lbl_crediario_vendido";
-            this.lbl_crediario_vendido.Size = new System.Drawing.Size(230, 13);
-            this.lbl_crediario_vendido.TabIndex = 402;
-            this.lbl_crediario_vendido.Text = "R$ 0.00";
-            this.lbl_crediario_vendido.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // label19
-            // 
-            this.label19.Location = new System.Drawing.Point(161, 139);
-            this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(230, 13);
-            this.label19.TabIndex = 403;
-            this.label19.Text = "R$ 0.00";
-            this.label19.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
             // Fechamento_Caixa
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(894, 440);
+            this.ClientSize = new System.Drawing.Size(989, 440);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.groupBox2);
@@ -567,7 +567,7 @@
         private System.Windows.Forms.Label lbl_debito;
         private System.Windows.Forms.Label lbl_dinheiro;
         private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Label label17;
+        private System.Windows.Forms.Label lbl_total_vendas;
         private System.Windows.Forms.Label label16;
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.Label label6;
