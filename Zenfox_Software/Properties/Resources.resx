@@ -142,8 +142,8 @@
   <data name="contacts-icon-png-2" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\contacts-icon-png-2.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="plus" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\plus.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="003-payment-method" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\003-payment-method.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="002-error1" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\002-error1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -166,8 +166,11 @@
   <data name="server-16" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\server-16.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="profit (2)" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\profit (2).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="receipt (1)" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\receipt (1).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="social" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\social.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="money" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\money.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -193,17 +196,14 @@
   <data name="004-check" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\004-check.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="receipt (1)" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\receipt (1).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="loading" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\loading.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="001-minimize" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\001-minimize.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="001-atm" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\001-atm.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="exit (3)" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\exit (3).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="002-error" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\002-error.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -223,8 +223,8 @@
   <data name="Agenzia-pubblicitaria-Treviso-e-provincia" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Agenzia-pubblicitaria-Treviso-e-provincia.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="package-2-32" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\package-2-32.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="plus" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\plus.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="sign-error-icon_34362" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\sign-error-icon_34362.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -241,8 +241,17 @@
   <data name="web" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\web.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="cashier (1)" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\cashier (1).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="package-2-32" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\package-2-32.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="004-credit-card" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\004-credit-card.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="delete" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\delete.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="add (1)" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\add (1).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -253,9 +262,6 @@
   <data name="contacts-icon-png-21" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\contacts-icon-png-21.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="search" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\search.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="remove_cart" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\remove_cart.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -265,8 +271,8 @@
   <data name="banknotes-32" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\banknotes-32.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="003-payment-method" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\003-payment-method.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="cottage-32" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\cottage-32.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="cash-back" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\cash-back.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -280,20 +286,14 @@
   <data name="support" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\support.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="cottage-32" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\cottage-32.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="001-atm1" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\001-atm1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="profit (2)" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\profit (2).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="web (1)" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\web (1).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="preview" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\preview;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="loading" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\loading.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="printer" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\printer.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -304,11 +304,14 @@
   <data name="cart-70-32" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\cart-70-32.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="001-atm1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\001-atm1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="sign-error-icon_343621" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\sign-error-icon_343621.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="cashier (1)" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\cashier (1).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="search" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\search.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="trash" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\trash.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -316,10 +319,10 @@
   <data name="receipt" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\receipt.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="social" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\social.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="exit (3)" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\exit (3).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="delete" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\delete.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="logo_nh" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\logo_nh.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>
