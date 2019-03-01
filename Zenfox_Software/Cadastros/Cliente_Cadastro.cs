@@ -141,7 +141,13 @@ namespace Zenfox_Software.Cadastros
 
         private void button2_Click(object sender, EventArgs e)
         {
-
+            if (MessageBox.Show("Deseja realmente excluir este cliente ?", "Confirmar", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1) == System.Windows.Forms.DialogResult.Yes)
+            {
+                Zenfox_Software_OO.Cadastros.Cliente cmd = new Zenfox_Software_OO.Cadastros.Cliente();
+                cmd.apaga(this.id);
+                MessageBox.Show("Cliente excluido com sucesso !");
+                this.Close();
+            }
         }
     }
 }

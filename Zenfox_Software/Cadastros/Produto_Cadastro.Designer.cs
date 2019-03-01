@@ -69,6 +69,8 @@
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.button2 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
+            this.txt_codigo_balanca = new System.Windows.Forms.TextBox();
+            this.lbl_balanca = new System.Windows.Forms.Label();
             this.tabPage2.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -159,6 +161,8 @@
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.txt_codigo_balanca);
+            this.panel1.Controls.Add(this.lbl_balanca);
             this.panel1.Controls.Add(this.button4);
             this.panel1.Controls.Add(this.cb_unidade_medida);
             this.panel1.Controls.Add(this.label17);
@@ -219,6 +223,7 @@
             this.cb_unidade_medida.Name = "cb_unidade_medida";
             this.cb_unidade_medida.Size = new System.Drawing.Size(202, 23);
             this.cb_unidade_medida.TabIndex = 244;
+            this.cb_unidade_medida.SelectedIndexChanged += new System.EventHandler(this.cb_unidade_medida_SelectedIndexChanged);
             // 
             // label17
             // 
@@ -586,6 +591,31 @@
             this.button1.UseVisualStyleBackColor = false;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
+            // txt_codigo_balanca
+            // 
+            this.txt_codigo_balanca.Font = new System.Drawing.Font("Segoe UI Light", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txt_codigo_balanca.Location = new System.Drawing.Point(313, 16);
+            this.txt_codigo_balanca.Margin = new System.Windows.Forms.Padding(2);
+            this.txt_codigo_balanca.MaxLength = 6;
+            this.txt_codigo_balanca.Name = "txt_codigo_balanca";
+            this.txt_codigo_balanca.Size = new System.Drawing.Size(195, 22);
+            this.txt_codigo_balanca.TabIndex = 247;
+            this.txt_codigo_balanca.Visible = false;
+            this.txt_codigo_balanca.TextChanged += new System.EventHandler(this.txt_codigo_balanca_TextChanged);
+            this.txt_codigo_balanca.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txt_codigo_balanca_KeyPress);
+            // 
+            // lbl_balanca
+            // 
+            this.lbl_balanca.AutoSize = true;
+            this.lbl_balanca.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_balanca.Location = new System.Drawing.Point(310, 0);
+            this.lbl_balanca.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lbl_balanca.Name = "lbl_balanca";
+            this.lbl_balanca.Size = new System.Drawing.Size(88, 13);
+            this.lbl_balanca.TabIndex = 246;
+            this.lbl_balanca.Text = "Código Balança";
+            this.lbl_balanca.Visible = false;
+            // 
             // Produto_Cadastro
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -652,5 +682,7 @@
         private System.Windows.Forms.Label label17;
         private System.Windows.Forms.ComboBox cb_grupo_produto;
         private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.TextBox txt_codigo_balanca;
+        private System.Windows.Forms.Label lbl_balanca;
     }
 }

@@ -176,6 +176,20 @@ namespace Zenfox_Software_OO.Cadastros
         }
 
 
+        public void apaga(Int32 id)
+        {
+            data.bd_postgres sql = new data.bd_postgres();
+            sql.localdb();
+            sql.Comando = new Npgsql.NpgsqlCommand();
+
+
+            sql.Comando.Parameters.AddWithValue("@id", id);
+
+            sql.Comando.CommandText = "update cliente set status = false where id = @id ";
+            sql.AbrirConexao();
+            sql.ExecutaComando_v2();
+            sql.FechaConexao();
+        }
 
 
     }

@@ -193,6 +193,12 @@
     <Compile Include="caixa\Caixa_Cancela_SAT.Designer.cs">
       <DependentUpon>Caixa_Cancela_SAT.cs</DependentUpon>
     </Compile>
+    <Compile Include="caixa\Caixa_configuracao.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="caixa\Caixa_configuracao.Designer.cs">
+      <DependentUpon>Caixa_configuracao.cs</DependentUpon>
+    </Compile>
     <Compile Include="caixa\Caixa_Fechamento.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -222,6 +228,12 @@
     </Compile>
     <Compile Include="caixa\Fechamento_Caixa.Designer.cs">
       <DependentUpon>Fechamento_Caixa.cs</DependentUpon>
+    </Compile>
+    <Compile Include="caixa\Incluir_CPF.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="caixa\Incluir_CPF.Designer.cs">
+      <DependentUpon>Incluir_CPF.cs</DependentUpon>
     </Compile>
     <Compile Include="caixa\Pesquisa_cliente.cs">
       <SubType>Form</SubType>
@@ -402,6 +414,9 @@
     <EmbeddedResource Include="caixa\Caixa_Cancela_SAT.resx">
       <DependentUpon>Caixa_Cancela_SAT.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="caixa\Caixa_configuracao.resx">
+      <DependentUpon>Caixa_configuracao.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="caixa\Caixa_Fechamento.resx">
       <DependentUpon>Caixa_Fechamento.cs</DependentUpon>
     </EmbeddedResource>
@@ -416,6 +431,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="caixa\Fechamento_Caixa.resx">
       <DependentUpon>Fechamento_Caixa.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="caixa\Incluir_CPF.resx">
+      <DependentUpon>Incluir_CPF.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="caixa\Pesquisa_cliente.resx">
       <DependentUpon>Pesquisa_cliente.cs</DependentUpon>

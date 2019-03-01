@@ -486,7 +486,8 @@ namespace Zenfox_Software
             }
 
             // VERSÂO 1.0.5
-            if (codigo_atualizacao < 6){
+            if (codigo_atualizacao < 6)
+            {
 
                 StringBuilder sb = new StringBuilder();
 
@@ -520,6 +521,38 @@ namespace Zenfox_Software
                 Zenfox_Software_OO.helper.executa_comando_sql(sb.ToString());
 
             }
+
+            // VERSÂO 1.0.7
+            if (codigo_atualizacao < 8)
+            {
+
+                StringBuilder sb = new StringBuilder();
+
+                // Criando tabela de configucarao do caixa
+                sb.Clear();
+                sb.AppendLine("    CREATE TABLE configuracao_caixa ");
+                sb.AppendLine("( ");
+                sb.AppendLine("configuracao_balanca smallint DEFAULT 0, ");
+                sb.AppendLine("exibir_balanca_pdv boolean, ");
+                sb.AppendLine("quantidade_caracteres_peso smallint ");
+                sb.AppendLine("); ");
+
+                Zenfox_Software_OO.helper.executa_comando_sql(sb.ToString());
+
+                // Atualiza versão
+                sb.Clear();
+                sb.AppendLine("insert into configuracao_caixa(configuracao_balanca, exibir_balanca_pdv, quantidade_caracteres_peso) values(1, false, 5); ");
+                sb.AppendLine("alter table vendas_itens alter column quantidade type Double precision; ");
+                sb.AppendLine("alter table produto add column codigo_balanca integer; ");
+                sb.AppendLine("update razor_licencas set codigo_versao = 8");
+                Zenfox_Software_OO.helper.executa_comando_sql(sb.ToString());
+
+            }
+
+
+
+            //drop table configuracao_caixa
+
 
         }
 
@@ -558,6 +591,55 @@ namespace Zenfox_Software
 
 
         //        }
+
+
+        /*
+         * 
+status: [pago,cancelado]
+tipo [Despesa fixas(valor fixo cobrado todos os mêses), despesa variavel (valor variavel)]
+tipo_emissor:[Cliente, fornecedor]
+id_emissor: 
+descrição: 
+data_criação
+data_vencimento: 
+
+
+# detalhamento 
+
+id_conta
+n_duplicata
+status [aberto,pago]
+data_vencimento
+valor
+
+
+
+
+
+
+
+
+
+
+CREATE TABLE configuracao_caixa
+(
+configuracao_balanca smallint DEFAULT 0,
+exibir_balanca_pdv boolean,
+quantidade_caracteres_peso smallint
+);
+
+insert into configuracao_caixa (configuracao_balanca,exibir_balanca_pdv,quantidade_caracteres_peso) values(1,false,5);
+
+alter table vendas_itens alter column quantidade type Double precision;
+
+alter table produto add column codigo_balanca integer;
+
+drop table configuracao_caixa
+
+
+
+
+         * */
 
 
         private void label1_Click(object sender, EventArgs e)

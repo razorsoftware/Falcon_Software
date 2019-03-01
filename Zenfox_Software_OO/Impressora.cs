@@ -57,6 +57,9 @@ namespace Zenfox_Software_OO
         public Double total_debito = 0;
         public Double total_crediario = 0;
         public Double total_cheque = 0;
+        public Double crediario_vendido = 0;
+        public Double crediario_recebido = 0;
+        public Double total_vendas = 0;
 
         public void imprime_fechamento_caixa()
         {
@@ -213,28 +216,33 @@ namespace Zenfox_Software_OO
             g = escreve_texto("R$ " + this.total_credito.ToString("F2"), g);
             g = escreve_mini_titulo("Total em Cheque", g);
             g = escreve_texto("R$ " + this.total_cheque.ToString("F2"), g);
+            g = escreve_mini_titulo("Total em Crediário Vendido", g);
+            g = escreve_texto("R$ " + this.crediario_vendido.ToString("F2"), g);
+            g = escreve_mini_titulo("Total em Crediário Recebido", g);
+            g = escreve_texto("R$ " + this.crediario_recebido.ToString("F2"), g);
+            g = quebra_linha(g);
             g = escreve_mini_titulo("Total de Acrescimo Caixa/Suprimento", g);
             g = escreve_texto("R$ " + this.total_suprimento.ToString("F2"), g);
             g = escreve_mini_titulo("Total de Retirada/Sangria", g);
             g = escreve_texto("R$ " + this.total_sangria.ToString("F2"), g);
-            g = escreve_mini_titulo("Total em Crediário/Promissória", g);
-            g = escreve_texto("R$ " + this.total_crediario.ToString("F2"), g);
+            g = escreve_texto("---------------------- [Total Geral] --------------------------", g);
+            
+            g = quebra_linha(g);
+
+            g = escreve_mini_titulo("Total Vendas", g);
+            g = escreve_texto("R$ " + this.total_vendas.ToString("F2"), g);
             g = escreve_mini_titulo("Total Cancelado", g);
             g = escreve_texto("R$ " + this.total_cancelado.ToString("F2"), g);
             g = escreve_mini_titulo("Total Desconto", g);
             g = escreve_texto("R$ " + this.total_desconto.ToString("F2"), g);
+            g = escreve_mini_titulo("Total Vendas Liquido", g);
+            g = escreve_texto("R$ " + ((this.total_vendas) - (this.total_desconto + this.total_cancelado)).ToString("F2"), g);
+
             g = quebra_linha(g);
-            g = escreve_mini_titulo("Total Vendas", g);
-            g = escreve_texto("R$ " + (this.total_geral - this.total_cancelado).ToString("F2"), g);
             g = quebra_linha(g);
-            g = escreve_texto("---------------------- [Total Geral] --------------------------", g);
-            g = quebra_linha(g);
-            g = escreve_mini_titulo("Total Bruto", g);
-            this.total_geral += this.total_abertura_caixa;
-            this.total_geral += this.total_suprimento;
-            g = escreve_texto("R$ " + (this.total_geral).ToString("F2"), g);
-            g = escreve_mini_titulo("Total Geral em Caixa", g);
-            g = escreve_texto("R$ " + (this.total_geral - (total_desconto + total_sangria + total_cancelado)).ToString("F2"), g);
+
+            g = escreve_mini_titulo("Total Fechamento", g);
+            g = escreve_texto("R$ " + ((this.total_vendas + this.total_abertura_caixa + this.total_suprimento) - (this.total_desconto + this.total_cancelado + this.total_sangria)).ToString("F2"), g);
 
 
             //g = escreve_texto("Data Hora Fechamento: " + DateTime.Now.Day.ToString() + "/" + DateTime.Now.Month.ToString() + "/" + DateTime.Now.Year, g);

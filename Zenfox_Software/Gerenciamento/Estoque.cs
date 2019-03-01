@@ -29,10 +29,10 @@ namespace Zenfox_Software.Gerenciamento
             Int32 grupo_produto = 0;
             try { grupo_produto = Int32.Parse(cb_grupo_produto.SelectedValue.ToString()); } catch{  }
 
-            dataGridView1.DataSource = cmd_produto.seleciona_listagem_lite(new Zenfox_Software_OO.Cadastros.Entidade_Produto() { nome_produto = txt_pesquisa.Text, estoque_zerado = this.produtos_sem_estoque, estoque_abaixo_minimo = this.produtos_abaixo_estoque, grupo_produto = grupo_produto });
+            dataGridView1.DataSource = cmd_produto.seleciona_listagem_lite(new Zenfox_Software_OO.Cadastros.Entidade_Produto() { search = txt_pesquisa.Text, estoque_zerado = this.produtos_sem_estoque, estoque_abaixo_minimo = this.produtos_abaixo_estoque, grupo_produto = grupo_produto });
         
 
-            Zenfox_Software_OO.Cadastros.Entidade_Produto totais = cmd_produto.seleciona_totais_estoque(new Zenfox_Software_OO.Cadastros.Entidade_Produto() { nome_produto = txt_pesquisa.Text, estoque_zerado = this.produtos_sem_estoque, estoque_abaixo_minimo = this.produtos_abaixo_estoque, grupo_produto = grupo_produto });
+            Zenfox_Software_OO.Cadastros.Entidade_Produto totais = cmd_produto.seleciona_totais_estoque(new Zenfox_Software_OO.Cadastros.Entidade_Produto() { search = txt_pesquisa.Text, estoque_zerado = this.produtos_sem_estoque, estoque_abaixo_minimo = this.produtos_abaixo_estoque, grupo_produto = grupo_produto });
             lbl_quantidade.Text = totais.estoque.ToString();
             lbl_valor_estoque.Text = "R$ " + totais.valor_venda.ToString();
 

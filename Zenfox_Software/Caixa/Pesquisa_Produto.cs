@@ -64,7 +64,7 @@ namespace Zenfox_Software.caixa
             try
             {
                 this.id = Int32.Parse(dgDados.CurrentRow.Cells[0].Value.ToString());
-                this.codigo = dgDados.CurrentRow.Cells[7].Value.ToString();
+                this.codigo = dgDados.CurrentRow.Cells[8].Value.ToString();
 
                 if (id > 0)
                     this.Close();

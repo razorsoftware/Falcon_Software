@@ -42,7 +42,7 @@ namespace Zenfox_Software_OO.Cadastros
         public String ean { get; set; }
         public String ncm { get; set; }
         public Int32 cfop { get; set; }
-        public Int32 quantidade { get; set; }
+        public Double quantidade { get; set; }
 
     }
 
@@ -52,7 +52,7 @@ namespace Zenfox_Software_OO.Cadastros
         public Int32 venda { get; set; }
         public Int32 produto { get; set; }
         public Double valor { get; set; }
-        public Int32 quantidade { get; set; }
+        public Double quantidade { get; set; }
     }
 
     public enum Status_venda
@@ -109,7 +109,7 @@ namespace Zenfox_Software_OO.Cadastros
                 _item.ean = dr.GetString(ean);
                 _item.ncm = dr.GetString(ncm);
                 _item.cfop = dr.GetInt32(cfop);
-                _item.quantidade = dr.GetInt32(quantidade);
+                _item.quantidade = dr.GetDouble(quantidade);
                 _item.valor_total = dr.GetDouble(valor);
 
                 list.Add(_item);
@@ -190,8 +190,8 @@ namespace Zenfox_Software_OO.Cadastros
             x += "from vendas ";
 
 
-            x += "where status != " + Status_venda.aberto.GetHashCode() + " ";
-
+            x += "where status != " + Status_venda.aberto.GetHashCode() + " and status != "+Status_venda.cancelado.GetHashCode()+" ";
+            
             if (item.ver_todos_status == 0)
                 x += "and status != " + Status_venda.cancelado.GetHashCode() + " ";
 
@@ -273,11 +273,10 @@ namespace Zenfox_Software_OO.Cadastros
             String x = "select ";
             x += "CASE WHEN status = 1 THEN 'Ativa' when status = 2 then 'Cancelado' end as status, ";
             x += "CASE WHEN origem = 0 THEN 'Caixa' when origem = 1 then 'Crediário' end as origem, ";
-            x += "data,desconto,valor_total ";
-
-
+            x += "data,desconto,valor_total,(valor_total - desconto) as valor_vendido ";
+            
             x += "from vendas ";
-            x += "where 1 = 1 and status != " + Status_venda.aberto.GetHashCode() + " and origem != " + Origem_venda.crediario.GetHashCode() + " ";
+            x += "where 1 = 1 and status = " + Status_venda.fechado.GetHashCode() + " and origem != " + Origem_venda.crediario.GetHashCode() + " ";
 
             if (item.para_cancelamento)
             {
@@ -294,7 +293,7 @@ namespace Zenfox_Software_OO.Cadastros
 
             if (item.caixa > 0)
                 x += " and caixa = " + item.caixa + " ";
-
+            
             x += " order by data desc ";
 
             sql.Comando.CommandText = x;
@@ -462,7 +461,7 @@ namespace Zenfox_Software_OO.Cadastros
                 sql.Comando.Parameters.AddWithValue("@id", NpgsqlTypes.NpgsqlDbType.Integer, id);
                 sql.Comando.Parameters.AddWithValue("@produto", NpgsqlTypes.NpgsqlDbType.Integer, produto.produto);
                 sql.Comando.Parameters.AddWithValue("@valor", NpgsqlTypes.NpgsqlDbType.Double, produto.valor);
-                sql.Comando.Parameters.AddWithValue("@quantidade", NpgsqlTypes.NpgsqlDbType.Integer, produto.quantidade);
+                sql.Comando.Parameters.AddWithValue("@quantidade", NpgsqlTypes.NpgsqlDbType.Double, produto.quantidade);
 
                 sql.AbrirConexao();
                 sql.ExecutaComando_v2();

@@ -57,7 +57,7 @@ namespace Zenfox_Software.Cadastros
             txt_estoque.Text = item.estoque.ToString("0.00").Replace(',', '.');
             txt_estoque_maximo.Text = item.estoque_maximo.ToString();
             txt_estoque_minimo.Text = item.estoque_minimo.ToString();
-
+            txt_codigo_balanca.Text = item.codigo_balanca;
         }
 
         public void popula_combobox_fornecedor()
@@ -169,6 +169,11 @@ namespace Zenfox_Software.Cadastros
                                 }
 
                                 item.ean = txt_ean.Text;
+                                if (txt_codigo_balanca.Text.Length > 0)
+                                    item.codigo_balanca = txt_codigo_balanca.Text;
+                                else
+                                    item.codigo_balanca = "0";
+
                                 #region Valores
 
                                 if (txtValor_Compra.Text.Length > 0)
@@ -741,6 +746,47 @@ namespace Zenfox_Software.Cadastros
         private void txt_estoque_TextChanged(object sender, EventArgs e)
         {
             Moeda(txt_estoque);
+        }
+
+        private void cb_unidade_medida_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if(cb_unidade_medida.SelectedValue.ToString() == "2")
+            {
+                lbl_balanca.Visible = true;
+                txt_codigo_balanca.Visible = true;
+            }
+            else
+            {
+                lbl_balanca.Visible = false;
+                txt_codigo_balanca.Visible = false;
+            }
+        }
+
+        private void txt_codigo_balanca_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txt_codigo_balanca_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            try
+            {
+                if ((e.KeyChar < '0' || e.KeyChar > '9') && (e.KeyChar != (Char)13 && e.KeyChar != (Char)8))
+                {
+                    e.KeyChar = (Char)0;
+                }
+                else
+                {
+                    if (e.KeyChar == '.' || e.KeyChar == ',')
+                    {
+                
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1);
+            }
         }
     }
 }

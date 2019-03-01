@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -39,6 +40,9 @@ namespace Zenfox_Software.caixa
 
             lbl_nome_operador.Text = Zenfox_Software_OO.Cadastros.Usuario.seleciona_nome(new Zenfox_Software_OO.Cadastros.Entidade_Usuario() { id = this.id_usuario });
 
+
+            Zenfox_Software_OO.Caixa.Configuracao cmd_caixa = new Zenfox_Software_OO.Caixa.Configuracao();
+            btn_balanca.Visible = cmd_caixa.seleciona().exibir_balanca_pdv;
         }
 
         public void verifica_key_up_atalho(KeyEventArgs e)
@@ -203,7 +207,7 @@ namespace Zenfox_Software.caixa
                             Zenfox_Software_OO.Cadastros.Entidade_Vendas_Produtos produtos = new Zenfox_Software_OO.Cadastros.Entidade_Vendas_Produtos();
 
                             produtos.produto = Int32.Parse(row.Cells[0].Value.ToString());
-                            produtos.quantidade = Int32.Parse(row.Cells[2].Value.ToString());
+                            produtos.quantidade = Double.Parse(row.Cells[2].Value.ToString());
                             produtos.valor = Double.Parse(row.Cells[3].Value.ToString());
                             vendas.produtos.Add(produtos);
                         }
@@ -216,7 +220,7 @@ namespace Zenfox_Software.caixa
                     Zenfox_Software_OO.Cadastros.Vendas vcmd = new Zenfox_Software_OO.Cadastros.Vendas();
                     Int32 id = vcmd.cadastra(vendas);
 
-                    Caixa_Fechamento cmd = new Caixa_Fechamento(id,this.id_usuario);
+                    Caixa_Fechamento cmd = new Caixa_Fechamento(id,this.id_usuario,lbl_cpf.Text);
                     cmd.ShowDialog();
 
                     if (cmd.vendido)
@@ -240,12 +244,14 @@ namespace Zenfox_Software.caixa
                 limpa_produto();
                 dg_venda.Rows.Clear();
                 calcula_total();
+                lbl_cpf.Text = "";
             }
             else if (MessageBox.Show("Deseja realmente limpar esta venda ?", "Confirmar", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1) == System.Windows.Forms.DialogResult.Yes)
             {
                 limpa_produto();
                 dg_venda.Rows.Clear();
                 calcula_total();
+                lbl_cpf.Text = "";
             }
         }
 
@@ -253,6 +259,7 @@ namespace Zenfox_Software.caixa
         {
 
             Zenfox_Software_OO.Cadastros.Entidade_Produto item = new Zenfox_Software_OO.Cadastros.Entidade_Produto();
+
 
             if (id > 0)
                 item.id = id;
@@ -769,6 +776,37 @@ namespace Zenfox_Software.caixa
                 txt_valor_produto.Text = cmd.valor_produto.ToString();
                 insere_produto();
             }
+
+        }
+
+        private void button9_Click_1(object sender, EventArgs e)
+        {
+            Incluir_CPF cmd = new Incluir_CPF();
+            cmd.ShowDialog();
+
+            if (cmd.txt_cpf.Text.Length > 0)
+                lbl_cpf.Text = cmd.txt_cpf.Text;
+
+        }
+
+        private void button10_Click_1(object sender, EventArgs e)
+        {
+            caixa.Caixa_configuracao cmd = new Caixa_configuracao();
+            cmd.ShowDialog();
+
+            Zenfox_Software_OO.Caixa.Configuracao cmd_caixa = new Zenfox_Software_OO.Caixa.Configuracao();
+            btn_balanca.Visible = cmd_caixa.seleciona().exibir_balanca_pdv;
+        }
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            DateTime data = new DateTime(); //29/05/2009  
+            data = DateTime.Now;
+            CultureInfo culture = new CultureInfo("pt-BR");
+            DateTimeFormatInfo dtfi = culture.DateTimeFormat;
+            lbl_dia_semana.Text = dtfi.GetDayName(data.DayOfWeek);
+            lbl_hora.Text = data.ToShortTimeString();
+            lbl_data.Text = data.ToShortDateString();
 
         }
     }
