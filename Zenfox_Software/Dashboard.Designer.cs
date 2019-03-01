@@ -49,6 +49,8 @@
             this.calcularXMLToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.suporteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label2 = new System.Windows.Forms.Label();
             this.lbl_server_ip = new System.Windows.Forms.Label();
             this.lbl_dia_semana = new System.Windows.Forms.Label();
@@ -80,22 +82,24 @@
             this.button8 = new System.Windows.Forms.Button();
             this.button7 = new System.Windows.Forms.Button();
             this.button6 = new System.Windows.Forms.Button();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.button5 = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.btn_abrir_caixa = new System.Windows.Forms.Button();
+            this.gbAlertaSistema = new System.Windows.Forms.GroupBox();
+            this.lbl_alerta_sistema = new System.Windows.Forms.Label();
+            this.background_checkup = new System.ComponentModel.BackgroundWorker();
             this.menuStrip1.SuspendLayout();
             this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.alert_message)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.gbAlertaSistema.SuspendLayout();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -265,6 +269,27 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1115, 79);
             this.panel1.TabIndex = 26;
+            // 
+            // pictureBox2
+            // 
+            this.pictureBox2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.pictureBox2.Image = global::Zenfox_Software.Properties.Resources.windows_client_16;
+            this.pictureBox2.Location = new System.Drawing.Point(1077, 24);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(18, 16);
+            this.pictureBox2.TabIndex = 7;
+            this.pictureBox2.TabStop = false;
+            this.pictureBox2.Click += new System.EventHandler(this.pictureBox2_Click);
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.pictureBox1.Image = global::Zenfox_Software.Properties.Resources.server_16;
+            this.pictureBox1.Location = new System.Drawing.Point(1077, 6);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(18, 16);
+            this.pictureBox1.TabIndex = 6;
+            this.pictureBox1.TabStop = false;
             // 
             // label2
             // 
@@ -621,27 +646,6 @@
             this.button6.UseVisualStyleBackColor = false;
             this.button6.Click += new System.EventHandler(this.button6_Click);
             // 
-            // pictureBox2
-            // 
-            this.pictureBox2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.pictureBox2.Image = global::Zenfox_Software.Properties.Resources.windows_client_16;
-            this.pictureBox2.Location = new System.Drawing.Point(1077, 24);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(18, 16);
-            this.pictureBox2.TabIndex = 7;
-            this.pictureBox2.TabStop = false;
-            this.pictureBox2.Click += new System.EventHandler(this.pictureBox2_Click);
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.pictureBox1.Image = global::Zenfox_Software.Properties.Resources.server_16;
-            this.pictureBox1.Location = new System.Drawing.Point(1077, 6);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(18, 16);
-            this.pictureBox1.TabIndex = 6;
-            this.pictureBox1.TabStop = false;
-            // 
             // button5
             // 
             this.button5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
@@ -750,11 +754,42 @@
             this.btn_abrir_caixa.UseVisualStyleBackColor = false;
             this.btn_abrir_caixa.Click += new System.EventHandler(this.btn_abrir_caixa_Click);
             // 
+            // gbAlertaSistema
+            // 
+            this.gbAlertaSistema.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.gbAlertaSistema.Controls.Add(this.lbl_alerta_sistema);
+            this.gbAlertaSistema.ForeColor = System.Drawing.Color.Red;
+            this.gbAlertaSistema.Location = new System.Drawing.Point(12, 494);
+            this.gbAlertaSistema.Name = "gbAlertaSistema";
+            this.gbAlertaSistema.Size = new System.Drawing.Size(536, 59);
+            this.gbAlertaSistema.TabIndex = 41;
+            this.gbAlertaSistema.TabStop = false;
+            this.gbAlertaSistema.Text = "Alerta do Sistema";
+            this.gbAlertaSistema.Visible = false;
+            this.gbAlertaSistema.Enter += new System.EventHandler(this.groupBox3_Enter);
+            // 
+            // lbl_alerta_sistema
+            // 
+            this.lbl_alerta_sistema.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.lbl_alerta_sistema.ForeColor = System.Drawing.Color.Black;
+            this.lbl_alerta_sistema.Location = new System.Drawing.Point(7, 16);
+            this.lbl_alerta_sistema.Name = "lbl_alerta_sistema";
+            this.lbl_alerta_sistema.Size = new System.Drawing.Size(523, 37);
+            this.lbl_alerta_sistema.TabIndex = 0;
+            this.lbl_alerta_sistema.Text = "label8";
+            this.lbl_alerta_sistema.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // background_checkup
+            // 
+            this.background_checkup.DoWork += new System.ComponentModel.DoWorkEventHandler(this.background_checkup_DoWork);
+            this.background_checkup.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.background_checkup_RunWorkerCompleted);
+            // 
             // Dashboard
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1098, 638);
+            this.Controls.Add(this.gbAlertaSistema);
             this.Controls.Add(this.alert_message);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.btn_contabilidade);
@@ -786,14 +821,15 @@
             this.menuStrip1.PerformLayout();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.alert_message)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            this.gbAlertaSistema.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -858,5 +894,8 @@
         private System.Windows.Forms.Timer timer3;
         private System.Windows.Forms.Timer timer4;
         private System.Windows.Forms.PictureBox alert_message;
+        private System.Windows.Forms.GroupBox gbAlertaSistema;
+        private System.Windows.Forms.Label lbl_alerta_sistema;
+        private System.ComponentModel.BackgroundWorker background_checkup;
     }
 }
