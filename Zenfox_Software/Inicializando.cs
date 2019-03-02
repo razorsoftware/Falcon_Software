@@ -550,6 +550,30 @@ namespace Zenfox_Software
             }
 
 
+            // VERSÂO 1.2
+            if(codigo_atualizacao < 9)
+            {
+                StringBuilder sb = new StringBuilder();
+
+                // Criando tabela de configucarao do caixa
+                sb.Clear();
+                sb.AppendLine("CREATE TABLE contabilidade ");
+                sb.AppendLine("( ");
+                sb.AppendLine("  id serial NOT NULL, ");
+                sb.AppendLine("  nome character varying(80), ");
+                sb.AppendLine("  email character varying(200) ");
+                sb.AppendLine(") ");
+
+
+                Zenfox_Software_OO.helper.executa_comando_sql(sb.ToString());
+
+                // Atualiza versão
+                sb.Clear();
+                sb.AppendLine("update razor_licencas set codigo_versao = 9");
+                Zenfox_Software_OO.helper.executa_comando_sql(sb.ToString());
+
+
+            }
 
             //drop table configuracao_caixa
 

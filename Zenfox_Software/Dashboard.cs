@@ -513,6 +513,12 @@ namespace Zenfox_Software
                 lbl_alerta_sistema.Text = this.msg_erro;
             }
         }
+
+        private void contabilidadeToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            Cadastros.Contabilidade cmd = new Cadastros.Contabilidade();
+            cmd.Show();
+        }
     }
     public class Person
     {

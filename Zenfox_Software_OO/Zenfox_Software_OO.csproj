@@ -76,6 +76,7 @@
     <Compile Include="Cadastros\Cliente.cs" />
     <Compile Include="Cadastros\Compras.cs" />
     <Compile Include="Cadastros\Configuracao.cs" />
+    <Compile Include="Cadastros\Contabilidade.cs" />
     <Compile Include="Cadastros\Empresa.cs" />
     <Compile Include="Cadastros\Fornecedor.cs" />
     <Compile Include="Cadastros\Licenca.cs" />
