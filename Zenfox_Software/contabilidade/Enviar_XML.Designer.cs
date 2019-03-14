@@ -36,6 +36,7 @@
             this.progressBar1 = new System.Windows.Forms.ProgressBar();
             this.btn_processar = new System.Windows.Forms.Button();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.lbl_total_vendas = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // label1
@@ -52,7 +53,7 @@
             // 
             // txt_email
             // 
-            this.txt_email.Location = new System.Drawing.Point(16, 107);
+            this.txt_email.Location = new System.Drawing.Point(15, 186);
             this.txt_email.Name = "txt_email";
             this.txt_email.Size = new System.Drawing.Size(614, 20);
             this.txt_email.TabIndex = 1;
@@ -60,7 +61,7 @@
             // lbl_email
             // 
             this.lbl_email.AutoSize = true;
-            this.lbl_email.Location = new System.Drawing.Point(13, 91);
+            this.lbl_email.Location = new System.Drawing.Point(12, 170);
             this.lbl_email.Name = "lbl_email";
             this.lbl_email.Size = new System.Drawing.Size(93, 13);
             this.lbl_email.TabIndex = 2;
@@ -77,7 +78,7 @@
             // 
             // progressBar1
             // 
-            this.progressBar1.Location = new System.Drawing.Point(16, 104);
+            this.progressBar1.Location = new System.Drawing.Point(15, 183);
             this.progressBar1.MarqueeAnimationSpeed = 5000;
             this.progressBar1.Maximum = 10;
             this.progressBar1.Name = "progressBar1";
@@ -88,7 +89,7 @@
             // 
             // btn_processar
             // 
-            this.btn_processar.Location = new System.Drawing.Point(264, 154);
+            this.btn_processar.Location = new System.Drawing.Point(263, 233);
             this.btn_processar.Name = "btn_processar";
             this.btn_processar.Size = new System.Drawing.Size(122, 23);
             this.btn_processar.TabIndex = 5;
@@ -98,14 +99,24 @@
             // 
             // timer1
             // 
-            this.timer1.Interval = 7000;
+            this.timer1.Interval = 5000;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
+            // 
+            // lbl_total_vendas
+            // 
+            this.lbl_total_vendas.AutoSize = true;
+            this.lbl_total_vendas.Location = new System.Drawing.Point(140, 89);
+            this.lbl_total_vendas.Name = "lbl_total_vendas";
+            this.lbl_total_vendas.Size = new System.Drawing.Size(45, 13);
+            this.lbl_total_vendas.TabIndex = 6;
+            this.lbl_total_vendas.Text = "R$ 0,00";
             // 
             // Enviar_XML
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(642, 189);
+            this.ClientSize = new System.Drawing.Size(642, 268);
+            this.Controls.Add(this.lbl_total_vendas);
             this.Controls.Add(this.btn_processar);
             this.Controls.Add(this.progressBar1);
             this.Controls.Add(this.lbl_progresso);
@@ -129,5 +140,6 @@
         private System.Windows.Forms.ProgressBar progressBar1;
         private System.Windows.Forms.Button btn_processar;
         private System.Windows.Forms.Timer timer1;
+        private System.Windows.Forms.Label lbl_total_vendas;
     }
 }

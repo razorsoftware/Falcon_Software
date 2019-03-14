@@ -13,6 +13,7 @@ namespace Zenfox_Software_OO.Cadastros
 
         public Int32 id { get; set; }
         public Int32 id_produto { get; set; }
+        public Int32 id_cliente { get; set; }
         public Int32 caixa { get; set; }
         public Status_venda status { get; set; }
         public Int32 ver_todos_status { get; set; } // 1 Para ver cancelados
@@ -59,7 +60,8 @@ namespace Zenfox_Software_OO.Cadastros
     {
         aberto = 0,
         fechado = 1,
-        cancelado = 2
+        cancelado = 2,
+        orcamento = 3
     }
 
     public enum Origem_venda
@@ -305,6 +307,47 @@ namespace Zenfox_Software_OO.Cadastros
             return dttb;
         }
 
+        public DataTable seleciona_orcamento_gerencia(Entidade_Vendas item)
+        {
+
+            data.bd_postgres sql = new data.bd_postgres();
+            sql.localdb();
+            sql.AbrirConexao();
+            sql.Comando = new Npgsql.NpgsqlCommand();
+            String x = "select id, ";
+            x += "CASE WHEN status = 3 THEN 'Orçamento' when status = 2 then 'Cancelado' end as status, ";
+            x += "data,dinheiro,debito,credito,cheque,crediario,desconto,valor_total ";
+
+
+            x += "from vendas ";
+            x += "where 1 = 1 and status = " + Status_venda.orcamento.GetHashCode() + " ";
+
+            if (item.para_cancelamento)
+            {
+                DateTime dt = DateTime.Now;
+                dt = dt.AddMinutes(-30);
+                x += " and data > '" + dt.ToString() + "' ";
+            }
+
+            if (item.data_inicial.Length > 0)
+                x += " and data >= '" + item.data_inicial + " 00:00:00' ";
+
+            if (item.data_final.Length > 0)
+                x += " and data <= '" + item.data_final + " 23:59:59' ";
+
+            if (item.caixa > 0)
+                x += " and caixa = " + item.caixa + " ";
+
+            x += " order by data desc ";
+
+            sql.Comando.CommandText = x;
+            IDataReader dr = sql.RetornaDados_v2();
+            DataTable dttb = new DataTable();
+            dttb.Load(dr);
+
+            sql.FechaConexao();
+            return dttb;
+        }
 
 
         public DataTable seleciona_vendas_gerencia(Entidade_Vendas item)
@@ -321,7 +364,7 @@ namespace Zenfox_Software_OO.Cadastros
 
 
             x += "from vendas ";
-            x += "where 1 = 1 and status != " + Status_venda.aberto.GetHashCode() + " ";
+            x += "where 1 = 1 and status != " + Status_venda.aberto.GetHashCode() + " and status != "+ Status_venda.orcamento.GetHashCode() +" ";
 
             if (item.para_cancelamento)
             {
@@ -515,6 +558,51 @@ namespace Zenfox_Software_OO.Cadastros
             sql.ExecutaComando_v2();
             sql.FechaConexao();
         }
+
+        public void fecha_venda_orcamento(Entidade_Vendas item)
+        {
+            data.bd_postgres sql = new data.bd_postgres();
+            sql.localdb();
+            sql.AbrirConexao();
+            sql.Comando = new Npgsql.NpgsqlCommand();
+
+            StringBuilder sb = new StringBuilder();
+
+            sb.AppendLine("update vendas set status = @status ,origem =@origem,crediario = @crediario, data = current_timestamp,");
+            sb.AppendLine("xml = @xml, dinheiro = @dinheiro, debito = @debito, credito = @credito, cheque = @cheque, desconto = @desconto ");
+            sb.AppendLine(", caixa = (select id from caixa where status = @status_caixa) ");
+            sb.AppendLine("where id = @id");
+
+            sql.Comando.Parameters.AddWithValue("@status", NpgsqlTypes.NpgsqlDbType.Integer, Status_venda.orcamento.GetHashCode());
+            sql.Comando.Parameters.AddWithValue("@xml", NpgsqlTypes.NpgsqlDbType.Varchar, item.xml);
+            sql.Comando.Parameters.AddWithValue("@dinheiro", NpgsqlTypes.NpgsqlDbType.Double, item.dinheiro);
+            sql.Comando.Parameters.AddWithValue("@debito", NpgsqlTypes.NpgsqlDbType.Double, item.debito);
+            sql.Comando.Parameters.AddWithValue("@credito", NpgsqlTypes.NpgsqlDbType.Double, item.credito);
+            sql.Comando.Parameters.AddWithValue("@cheque", NpgsqlTypes.NpgsqlDbType.Double, item.cheque);
+            sql.Comando.Parameters.AddWithValue("@desconto", NpgsqlTypes.NpgsqlDbType.Double, item.desconto);
+            sql.Comando.Parameters.AddWithValue("@crediario", NpgsqlTypes.NpgsqlDbType.Double, item.crediario);
+            sql.Comando.Parameters.AddWithValue("@id", NpgsqlTypes.NpgsqlDbType.Integer, item.id);
+            sql.Comando.Parameters.AddWithValue("@origem", NpgsqlTypes.NpgsqlDbType.Integer, item.origem.GetHashCode());
+            sql.Comando.Parameters.AddWithValue("@status_caixa", NpgsqlTypes.NpgsqlDbType.Integer, Zenfox_Software_OO.Caixa.status.aberto.GetHashCode());
+
+
+            sql.Comando.CommandText = sb.ToString();
+            sql.ExecutaComando_v2();
+            sql.FechaConexao();
+
+            sb.Clear();
+            sb.AppendLine("update vendas set xml = @xml where id = @id");
+            sql.Comando = new Npgsql.NpgsqlCommand();
+
+            sql.Comando.Parameters.AddWithValue("@id", NpgsqlTypes.NpgsqlDbType.Integer, item.id);
+            sql.Comando.Parameters.AddWithValue("@xml", NpgsqlTypes.NpgsqlDbType.Varchar, item.xml);
+
+            sql.Comando.CommandText = sb.ToString();
+            sql.AbrirConexao();
+            sql.ExecutaComando_v2();
+            sql.FechaConexao();
+        }
+
 
     }
 }

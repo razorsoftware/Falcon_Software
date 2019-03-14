@@ -14,6 +14,7 @@ namespace Zenfox_Software.caixa
     {
 
         public String cliente = "";
+        public String cpf = "";
 
         public Pesquisa_cliente()
         {
@@ -36,6 +37,7 @@ namespace Zenfox_Software.caixa
         private void dataGridView1_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             this.cliente = dataGridView1.CurrentRow.Cells[0].Value.ToString() + " - " + dataGridView1.CurrentRow.Cells[1].Value.ToString();
+            this.cpf = dataGridView1.CurrentRow.Cells[2].Value.ToString();
             this.Close();
         }
     }

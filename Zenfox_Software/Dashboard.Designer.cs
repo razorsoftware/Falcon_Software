@@ -43,12 +43,15 @@
             this.correçõesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.produtosToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.produtosSemCategoriaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.contabilidadeToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.configuraçãoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.relatóriosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.contabilidadeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.calcularXMLToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.suporteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label2 = new System.Windows.Forms.Label();
             this.lbl_server_ip = new System.Windows.Forms.Label();
             this.lbl_dia_semana = new System.Windows.Forms.Label();
@@ -83,24 +86,22 @@
             this.button8 = new System.Windows.Forms.Button();
             this.button7 = new System.Windows.Forms.Button();
             this.button6 = new System.Windows.Forms.Button();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.button5 = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.btn_abrir_caixa = new System.Windows.Forms.Button();
-            this.contabilidadeToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.button11 = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
             this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.gbAlertaSistema.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.alert_message)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -133,14 +134,14 @@
             // fornecedorToolStripMenuItem
             // 
             this.fornecedorToolStripMenuItem.Name = "fornecedorToolStripMenuItem";
-            this.fornecedorToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.fornecedorToolStripMenuItem.Size = new System.Drawing.Size(174, 22);
             this.fornecedorToolStripMenuItem.Text = "Fornecedor";
             this.fornecedorToolStripMenuItem.Click += new System.EventHandler(this.fornecedorToolStripMenuItem_Click);
             // 
             // produtosToolStripMenuItem
             // 
             this.produtosToolStripMenuItem.Name = "produtosToolStripMenuItem";
-            this.produtosToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.produtosToolStripMenuItem.Size = new System.Drawing.Size(174, 22);
             this.produtosToolStripMenuItem.Text = "Produtos";
             this.produtosToolStripMenuItem.Click += new System.EventHandler(this.produtosToolStripMenuItem_Click);
             // 
@@ -153,7 +154,7 @@
             this.nCMToolStripMenuItem,
             this.cFOPToolStripMenuItem});
             this.tabelasDoSistemaToolStripMenuItem.Name = "tabelasDoSistemaToolStripMenuItem";
-            this.tabelasDoSistemaToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.tabelasDoSistemaToolStripMenuItem.Size = new System.Drawing.Size(174, 22);
             this.tabelasDoSistemaToolStripMenuItem.Text = "Tabelas do Sistema";
             // 
             // categoriaToolStripMenuItem
@@ -198,7 +199,7 @@
             this.correçõesToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.produtosToolStripMenuItem1});
             this.correçõesToolStripMenuItem.Name = "correçõesToolStripMenuItem";
-            this.correçõesToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.correçõesToolStripMenuItem.Size = new System.Drawing.Size(174, 22);
             this.correçõesToolStripMenuItem.Text = "Correções";
             // 
             // produtosToolStripMenuItem1
@@ -216,10 +217,17 @@
             this.produtosSemCategoriaToolStripMenuItem.Text = "Produtos sem Grupo";
             this.produtosSemCategoriaToolStripMenuItem.Click += new System.EventHandler(this.produtosSemCategoriaToolStripMenuItem_Click);
             // 
+            // contabilidadeToolStripMenuItem1
+            // 
+            this.contabilidadeToolStripMenuItem1.Name = "contabilidadeToolStripMenuItem1";
+            this.contabilidadeToolStripMenuItem1.Size = new System.Drawing.Size(174, 22);
+            this.contabilidadeToolStripMenuItem1.Text = "Contabilidade";
+            this.contabilidadeToolStripMenuItem1.Click += new System.EventHandler(this.contabilidadeToolStripMenuItem1_Click);
+            // 
             // configuraçãoToolStripMenuItem
             // 
             this.configuraçãoToolStripMenuItem.Name = "configuraçãoToolStripMenuItem";
-            this.configuraçãoToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.configuraçãoToolStripMenuItem.Size = new System.Drawing.Size(174, 22);
             this.configuraçãoToolStripMenuItem.Text = "Configuração";
             this.configuraçãoToolStripMenuItem.Click += new System.EventHandler(this.configuraçãoToolStripMenuItem_Click);
             // 
@@ -271,6 +279,27 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1115, 79);
             this.panel1.TabIndex = 26;
+            // 
+            // pictureBox2
+            // 
+            this.pictureBox2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.pictureBox2.Image = global::Zenfox_Software.Properties.Resources.windows_client_16;
+            this.pictureBox2.Location = new System.Drawing.Point(1077, 24);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(18, 16);
+            this.pictureBox2.TabIndex = 7;
+            this.pictureBox2.TabStop = false;
+            this.pictureBox2.Click += new System.EventHandler(this.pictureBox2_Click);
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.pictureBox1.Image = global::Zenfox_Software.Properties.Resources.server_16;
+            this.pictureBox1.Location = new System.Drawing.Point(1077, 6);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(18, 16);
+            this.pictureBox1.TabIndex = 6;
+            this.pictureBox1.TabStop = false;
             // 
             // label2
             // 
@@ -657,27 +686,6 @@
             this.button6.UseVisualStyleBackColor = false;
             this.button6.Click += new System.EventHandler(this.button6_Click);
             // 
-            // pictureBox2
-            // 
-            this.pictureBox2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.pictureBox2.Image = global::Zenfox_Software.Properties.Resources.windows_client_16;
-            this.pictureBox2.Location = new System.Drawing.Point(1077, 24);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(18, 16);
-            this.pictureBox2.TabIndex = 7;
-            this.pictureBox2.TabStop = false;
-            this.pictureBox2.Click += new System.EventHandler(this.pictureBox2_Click);
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.pictureBox1.Image = global::Zenfox_Software.Properties.Resources.server_16;
-            this.pictureBox1.Location = new System.Drawing.Point(1077, 6);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(18, 16);
-            this.pictureBox1.TabIndex = 6;
-            this.pictureBox1.TabStop = false;
-            // 
             // button5
             // 
             this.button5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
@@ -786,18 +794,30 @@
             this.btn_abrir_caixa.UseVisualStyleBackColor = false;
             this.btn_abrir_caixa.Click += new System.EventHandler(this.btn_abrir_caixa_Click);
             // 
-            // contabilidadeToolStripMenuItem1
+            // button11
             // 
-            this.contabilidadeToolStripMenuItem1.Name = "contabilidadeToolStripMenuItem1";
-            this.contabilidadeToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
-            this.contabilidadeToolStripMenuItem1.Text = "Contabilidade";
-            this.contabilidadeToolStripMenuItem1.Click += new System.EventHandler(this.contabilidadeToolStripMenuItem1_Click);
+            this.button11.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.button11.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(62)))), ((int)(((byte)(80)))));
+            this.button11.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button11.Font = new System.Drawing.Font("Segoe Print", 7F);
+            this.button11.ForeColor = System.Drawing.Color.White;
+            this.button11.Image = global::Zenfox_Software.Properties.Resources.credit_card_2_32;
+            this.button11.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.button11.Location = new System.Drawing.Point(326, 206);
+            this.button11.Name = "button11";
+            this.button11.Size = new System.Drawing.Size(100, 65);
+            this.button11.TabIndex = 42;
+            this.button11.Text = "Orçamento";
+            this.button11.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
+            this.button11.UseVisualStyleBackColor = false;
+            this.button11.Click += new System.EventHandler(this.button11_Click);
             // 
             // Dashboard
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1098, 638);
+            this.Controls.Add(this.button11);
             this.Controls.Add(this.gbAlertaSistema);
             this.Controls.Add(this.alert_message);
             this.Controls.Add(this.groupBox2);
@@ -830,6 +850,8 @@
             this.menuStrip1.PerformLayout();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
@@ -837,8 +859,6 @@
             this.gbAlertaSistema.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.alert_message)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -907,5 +927,6 @@
         private System.Windows.Forms.Label lbl_alerta_sistema;
         private System.ComponentModel.BackgroundWorker background_checkup;
         private System.Windows.Forms.ToolStripMenuItem contabilidadeToolStripMenuItem1;
+        private System.Windows.Forms.Button button11;
     }
 }

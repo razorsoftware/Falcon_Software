@@ -97,7 +97,8 @@ namespace Zenfox_Software.Cadastros
         {
             Zenfox_Software_OO.Cadastros.Entidade_Produto item = new Zenfox_Software_OO.Cadastros.Entidade_Produto();
 
-             //Validando NCM
+            //Validando NCM
+            txtNCM.Text = "00000000"; 
                         if (txtNCM.Text.Length >= 8)
            // if(true)
            {
@@ -106,8 +107,8 @@ namespace Zenfox_Software.Cadastros
                 {
                     try
                     {
-                        if (Int32.Parse(txtCFOP.SelectedItem.ToString().Split('-')[0].Trim()) > 0)
-                        //if (true)
+                        //if (Int32.Parse(txtCFOP.SelectedItem.ToString().Split('-')[0].Trim()) > 0)
+                        if (true)
                         {
                             //Validando EAN
                             if (txt_ean.Text != null && txt_ean.Text != "")

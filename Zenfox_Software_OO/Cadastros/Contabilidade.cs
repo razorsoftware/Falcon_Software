@@ -94,5 +94,29 @@ namespace Zenfox_Software_OO.Cadastros
 
         }
 
+
+        // Verifica se o mês da pesquisa ja foi feito o envio de arquivos para a contabilidade
+        public static Boolean verifica_mes_envio_contabilidade(String mes)
+        {
+            Boolean x = true;
+            data.bd_postgres sql = new data.bd_postgres();
+            sql.localdb();
+
+            sql.Comando = new Npgsql.NpgsqlCommand();
+
+            StringBuilder sb = new StringBuilder();
+            sb.AppendLine("select * from contabilidade_enviados where mes = '"+mes+"' ");
+
+            sql.Comando.CommandText = sb.ToString();
+            sql.AbrirConexao();
+            IDataReader dr = sql.RetornaDados_v2();
+            
+            while (dr.Read()){
+                x = false;
+            }
+
+            sql.FechaConexao();
+            return x;
+        }
     }
 }

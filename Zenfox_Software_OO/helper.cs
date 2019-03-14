@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
+using System.Net.Mail;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -153,6 +154,41 @@ namespace Zenfox_Software_OO
             sql.FechaConexao();
             
             return list;
+        }
+
+        public static Boolean envia_email(String destino,String mensagem)
+        {
+            System.Net.Mail.SmtpClient client = new System.Net.Mail.SmtpClient();
+            client.Host = "smtp.umbler.com";
+            client.Port = 587;
+            client.EnableSsl = true;
+            client.Credentials = new System.Net.NetworkCredential("sistema@razorsoft.com.br", "q2aw3@se4");
+
+            MailMessage mail = new MailMessage(); //Instancio o Objeto do tipo MailMessage
+            mail.Sender = new System.Net.Mail.MailAddress("sistema@razorsoft.com.br", "Sistema Falcon"); //Defino quem está enviado
+            mail.From = new System.Net.Mail.MailAddress("sistema@razorsoft.com.br", "Sistema Falcon"); //Defino o return path
+            mail.Subject = "Sistema Falcon - Envio de arquivos de fechamento"; //Assunto do e-mail
+            mail.BodyEncoding = System.Text.Encoding.UTF8;
+            mail.IsBodyHtml = true; //Avisamos que o e-mail é composto em HTML
+            mail.Priority = System.Net.Mail.MailPriority.Low; //Definimos a prioridade do e-mail como alta
+
+            mail.To.Add(new System.Net.Mail.MailAddress("razorsoftbr@gmail.com"));
+
+         
+            mail.Body += mensagem;
+
+            Boolean status_envio = true;
+
+            try
+            {
+                client.Send(mail);
+            }
+            catch
+            {
+                status_envio = false;
+            }
+
+            return status_envio;
         }
 
     }

@@ -325,6 +325,12 @@
     <Compile Include="Gerenciamento\Estoque_acerto.Designer.cs">
       <DependentUpon>Estoque_acerto.cs</DependentUpon>
     </Compile>
+    <Compile Include="Gerenciamento\Orcamento.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Gerenciamento\Orcamento.Designer.cs">
+      <DependentUpon>Orcamento.cs</DependentUpon>
+    </Compile>
     <Compile Include="Gerenciamento\Vendas.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -482,6 +488,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Gerenciamento\Estoque_acerto.resx">
       <DependentUpon>Estoque_acerto.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Gerenciamento\Orcamento.resx">
+      <DependentUpon>Orcamento.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Gerenciamento\Vendas.resx">
       <DependentUpon>Vendas.cs</DependentUpon>

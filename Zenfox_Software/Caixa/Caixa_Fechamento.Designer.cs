@@ -59,6 +59,7 @@
             this.groupBox8 = new System.Windows.Forms.GroupBox();
             this.txt_cheque = new System.Windows.Forms.TextBox();
             this.button5 = new System.Windows.Forms.Button();
+            this.button6 = new System.Windows.Forms.Button();
             this.groupBox4.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -385,7 +386,7 @@
             this.txt_cartao_credito.Location = new System.Drawing.Point(6, 21);
             this.txt_cartao_credito.Name = "txt_cartao_credito";
             this.txt_cartao_credito.Size = new System.Drawing.Size(267, 28);
-            this.txt_cartao_credito.TabIndex = 3;
+            this.txt_cartao_credito.TabIndex = 2;
             this.txt_cartao_credito.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.txt_cartao_credito.TextChanged += new System.EventHandler(this.txt_cartao_credito_TextChanged);
             this.txt_cartao_credito.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txt_cartao_credito_KeyPress);
@@ -410,7 +411,7 @@
             this.txt_cartao_debito.Location = new System.Drawing.Point(6, 21);
             this.txt_cartao_debito.Name = "txt_cartao_debito";
             this.txt_cartao_debito.Size = new System.Drawing.Size(267, 28);
-            this.txt_cartao_debito.TabIndex = 2;
+            this.txt_cartao_debito.TabIndex = 1;
             this.txt_cartao_debito.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.txt_cartao_debito.TextChanged += new System.EventHandler(this.textBox5_TextChanged);
             this.txt_cartao_debito.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox5_KeyPress);
@@ -444,24 +445,41 @@
             // button5
             // 
             this.button5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.button5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(204)))), ((int)(((byte)(113)))));
+            this.button5.BackColor = System.Drawing.SystemColors.Control;
             this.button5.Cursor = System.Windows.Forms.Cursors.Hand;
             this.button5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button5.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button5.ForeColor = System.Drawing.Color.White;
-            this.button5.Location = new System.Drawing.Point(493, 471);
+            this.button5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(73)))), ((int)(((byte)(94)))));
+            this.button5.Location = new System.Drawing.Point(361, 471);
             this.button5.Name = "button5";
             this.button5.Size = new System.Drawing.Size(126, 34);
             this.button5.TabIndex = 451;
-            this.button5.Text = "F1 - Crediário";
+            this.button5.Text = "Crediário";
             this.button5.UseVisualStyleBackColor = false;
             this.button5.Click += new System.EventHandler(this.button5_Click);
+            // 
+            // button6
+            // 
+            this.button6.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.button6.BackColor = System.Drawing.SystemColors.Control;
+            this.button6.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.button6.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button6.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(73)))), ((int)(((byte)(94)))));
+            this.button6.Location = new System.Drawing.Point(493, 471);
+            this.button6.Name = "button6";
+            this.button6.Size = new System.Drawing.Size(126, 34);
+            this.button6.TabIndex = 452;
+            this.button6.Text = "Orçamento";
+            this.button6.UseVisualStyleBackColor = false;
+            this.button6.Click += new System.EventHandler(this.button6_Click);
             // 
             // Caixa_Fechamento
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(762, 517);
+            this.Controls.Add(this.button6);
             this.Controls.Add(this.button5);
             this.Controls.Add(this.groupBox8);
             this.Controls.Add(this.groupBox7);
@@ -528,5 +546,6 @@
         private System.Windows.Forms.TextBox txt_cheque;
         private System.Windows.Forms.Button button5;
         private System.Windows.Forms.Button btn_logoff;
+        private System.Windows.Forms.Button button6;
     }
 }

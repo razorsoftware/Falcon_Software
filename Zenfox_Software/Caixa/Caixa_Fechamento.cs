@@ -17,7 +17,9 @@ namespace Zenfox_Software.caixa
         Zenfox_Software_OO.Cadastros.Vendas cmd_venda = new Zenfox_Software_OO.Cadastros.Vendas();
         public Boolean vendido = false;
         String cpf = "";
+        Int32 id_cliente = 0;
         Int32 id_usuario = 0;
+        Boolean orcamento = false;
 
         public void verifica_key_up_atalho(object sender, KeyEventArgs e)
         {
@@ -25,12 +27,12 @@ namespace Zenfox_Software.caixa
             if (e.KeyCode == Keys.F2)
                 button2_Click(sender, e);
 
-            if (e.KeyCode == Keys.F1)
-                button5_Click(sender, e);
+            //  if (e.KeyCode == Keys.F1)
+            //     button5_Click(sender, e);
         }
 
 
-        public Caixa_Fechamento(Int32 id,Int32 id_usuario,String cpf)
+        public Caixa_Fechamento(Int32 id, Int32 id_usuario, String cpf, Int32 id_cliente)
         {
             InitializeComponent();
 
@@ -47,6 +49,7 @@ namespace Zenfox_Software.caixa
             txt_dinheiro.Select();
             lbl_nome_operador.Text = Zenfox_Software_OO.Cadastros.Usuario.seleciona_nome(new Zenfox_Software_OO.Cadastros.Entidade_Usuario() { id = this.id_usuario });
             this.cpf = cpf;
+            this.id_cliente = id_cliente;
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -96,7 +99,8 @@ namespace Zenfox_Software.caixa
                 {
                     vendendo = false;
 
-                    try {
+                    try
+                    {
 
                         String x = "";
 
@@ -104,7 +108,7 @@ namespace Zenfox_Software.caixa
                         Zenfox_Software_OO.Cadastros.Configuracao cmd_config = new Zenfox_Software_OO.Cadastros.Configuracao();
                         Zenfox_Software_OO.Cadastros.Entidade_Configuracao item_config = cmd_config.seleciona(new Zenfox_Software_OO.Cadastros.Entidade_Configuracao());
 
-                        if (item_config.sat)
+                        if (item_config.sat && this.orcamento == false)
                         {
                             String string_sat = "";
 
@@ -131,7 +135,7 @@ namespace Zenfox_Software.caixa
                             string_sat += acbr.inicia_montagem(empresa.versao_cupom);
                             string_sat += acbr.identificacao(empresa.software_house, empresa.codigo_vinculacao, "1");
                             string_sat += acbr.emitente(empresa.cnpj.Replace(".", "").Replace(" / ", "").Replace(" - ", "").ToString(), empresa.ie, "");
-                            string_sat += acbr.destinatario(this.cpf,"");
+                            string_sat += acbr.destinatario(this.cpf, "");
 
                             Zenfox_Software_OO.Cadastros.Vendas cmd_vendas = new Zenfox_Software_OO.Cadastros.Vendas();
                             List<Zenfox_Software_OO.Cadastros.Entidade_Vendas> list = cmd_vendas.seleciona_detalhamento(new Zenfox_Software_OO.Cadastros.Entidade_Vendas() { id = this.venda.id });
@@ -169,7 +173,8 @@ namespace Zenfox_Software.caixa
 
                             // Pagamento em dinheiro ====================================
                             if (txt_dinheiro.Text.Length > 0)
-                                if (Double.Parse(txt_dinheiro.Text) > 0){
+                                if (Double.Parse(txt_dinheiro.Text) > 0)
+                                {
                                     string_sat += acbr.formas_pagamento(pagamento, 1, Double.Parse(txt_dinheiro.Text));
                                     pagamento++;
                                 }
@@ -208,7 +213,10 @@ namespace Zenfox_Software.caixa
                         }
                         else
                         {
-                            x = "nao_fiscal";
+                            if (this.orcamento)
+                                x = "orçamento";
+                            else
+                                x = "nao_fiscal";
                         }
 
                         if (x != "")
@@ -238,19 +246,33 @@ namespace Zenfox_Software.caixa
                             }
                             if (txt_desconto.Text.Length > 0)
                             {
-                                desconto = Convert.ToDouble(txt_desconto.Text);                                
+                                desconto = Convert.ToDouble(txt_desconto.Text);
                             }
                             _venda.desconto = desconto;
-
+                            _venda.id_cliente = this.id_cliente;
                             Zenfox_Software_OO.Cadastros.Vendas cmd = new Zenfox_Software_OO.Cadastros.Vendas();
-                            cmd.fecha_venda(_venda);
 
-                            //     public Double debito { get; set; }
-                            //     public Double credito { get; set; }
-                            //     public Double cheque { get; set; }
-                            dar_baixa_produtos();
-                            MessageBox.Show("Venda realizada com sucesso !");
-
+                            // Verifica se a venda é um orçamento
+                            if (!this.orcamento)
+                            {
+                                cmd.fecha_venda(_venda);
+                                dar_baixa_produtos();
+                                MessageBox.Show("Venda realizada com sucesso !");
+                            }
+                            else
+                            {
+                                if (_venda.id_cliente > 0)
+                                {
+                                    cmd.fecha_venda_orcamento(_venda);
+                                    MessageBox.Show("Orçamento realizado com sucesso !");
+                                }
+                                else
+                                {
+                                    MessageBox.Show("Você precisa selecionar um cliente para associar ele ao orçamento !");
+                                    return;
+                                }
+                            }
+                            
                             vendido = true;
                             this.Close();
                         }
@@ -260,12 +282,15 @@ namespace Zenfox_Software.caixa
 
 
                     vendendo = true;
+                    this.orcamento = false;
                 }
                 else
                 {
 
                 }
             }
+
+
         }
 
         private void textBox3_TextChanged(object sender, EventArgs e)
@@ -426,7 +451,7 @@ namespace Zenfox_Software.caixa
         private void txt_desconto_TextChanged(object sender, EventArgs e)
         {
             txt_desconto_percentual.Text = "";
-            if(txt_desconto.Text.Length > 0)
+            if (txt_desconto.Text.Length > 0)
                 Moeda(txt_desconto);
             calcula_totais();
         }
@@ -461,6 +486,13 @@ namespace Zenfox_Software.caixa
         private void txt_cartao_debito_KeyUp(object sender, KeyEventArgs e)
         {
             verifica_key_up_atalho(sender, e);
+        }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+            this.orcamento = true;
+            button2_Click(sender, e);
+
         }
     }
 }

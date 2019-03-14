@@ -38,19 +38,12 @@
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.txt_quantidade = new System.Windows.Forms.TextBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.btn_search = new System.Windows.Forms.Button();
             this.txt_codigo_barras = new System.Windows.Forms.TextBox();
             this.panel3 = new System.Windows.Forms.Panel();
-            this.button8 = new System.Windows.Forms.Button();
-            this.button7 = new System.Windows.Forms.Button();
-            this.btn_delete_venda = new System.Windows.Forms.Button();
             this.dg_venda = new System.Windows.Forms.DataGridView();
-            this.button1 = new System.Windows.Forms.Button();
             this.lbl_cabecalho_caixa = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.lbl_nome_operador = new System.Windows.Forms.Label();
-            this.button2 = new System.Windows.Forms.Button();
-            this.btn_logoff = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.lbl_nome_cliente = new System.Windows.Forms.Label();
             this.txtTotalFinal = new System.Windows.Forms.Label();
@@ -60,16 +53,26 @@
             this.lbl_dia_semana = new System.Windows.Forms.Label();
             this.lbl_data = new System.Windows.Forms.Label();
             this.lbl_hora = new System.Windows.Forms.Label();
+            this.lbl_cpf = new System.Windows.Forms.Label();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.button11 = new System.Windows.Forms.Button();
+            this.button6 = new System.Windows.Forms.Button();
+            this.button10 = new System.Windows.Forms.Button();
+            this.button9 = new System.Windows.Forms.Button();
+            this.btn_balanca = new System.Windows.Forms.Button();
             this.button5 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
             this.btn_minimizar = new System.Windows.Forms.Button();
+            this.button12 = new System.Windows.Forms.Button();
             this.btn_fechar = new System.Windows.Forms.Button();
-            this.btn_balanca = new System.Windows.Forms.Button();
-            this.button9 = new System.Windows.Forms.Button();
-            this.lbl_cpf = new System.Windows.Forms.Label();
-            this.button10 = new System.Windows.Forms.Button();
-            this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.button2 = new System.Windows.Forms.Button();
+            this.btn_logoff = new System.Windows.Forms.Button();
+            this.button8 = new System.Windows.Forms.Button();
+            this.button7 = new System.Windows.Forms.Button();
+            this.btn_delete_venda = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
+            this.btn_search = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.groupBox6.SuspendLayout();
             this.groupBox5.SuspendLayout();
@@ -192,25 +195,6 @@
             this.groupBox3.Text = "Código de Barras";
             this.groupBox3.Enter += new System.EventHandler(this.groupBox3_Enter);
             // 
-            // btn_search
-            // 
-            this.btn_search.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btn_search.FlatAppearance.BorderSize = 0;
-            this.btn_search.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_search.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_search.ForeColor = System.Drawing.Color.Black;
-            this.btn_search.Image = global::Zenfox_Software.Properties.Resources.search__1_;
-            this.btn_search.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btn_search.Location = new System.Drawing.Point(379, 10);
-            this.btn_search.Margin = new System.Windows.Forms.Padding(2);
-            this.btn_search.Name = "btn_search";
-            this.btn_search.Size = new System.Drawing.Size(119, 35);
-            this.btn_search.TabIndex = 1;
-            this.btn_search.Text = "F1 - Pesquisar";
-            this.btn_search.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btn_search.UseVisualStyleBackColor = true;
-            this.btn_search.Click += new System.EventHandler(this.btn_search_Click);
-            // 
             // txt_codigo_barras
             // 
             this.txt_codigo_barras.BorderStyle = System.Windows.Forms.BorderStyle.None;
@@ -241,57 +225,6 @@
             this.panel3.TabIndex = 2;
             this.panel3.Paint += new System.Windows.Forms.PaintEventHandler(this.panel3_Paint);
             // 
-            // button8
-            // 
-            this.button8.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.button8.BackgroundImage = global::Zenfox_Software.Properties.Resources._001_atm1;
-            this.button8.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.button8.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button8.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button8.Location = new System.Drawing.Point(254, 364);
-            this.button8.Margin = new System.Windows.Forms.Padding(2);
-            this.button8.Name = "button8";
-            this.button8.Size = new System.Drawing.Size(127, 43);
-            this.button8.TabIndex = 447;
-            this.button8.Text = "Acrescentar Caixa";
-            this.button8.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.button8.UseVisualStyleBackColor = true;
-            this.button8.Click += new System.EventHandler(this.button8_Click);
-            // 
-            // button7
-            // 
-            this.button7.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.button7.BackgroundImage = global::Zenfox_Software.Properties.Resources._002_atm_11;
-            this.button7.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.button7.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button7.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button7.Location = new System.Drawing.Point(138, 364);
-            this.button7.Margin = new System.Windows.Forms.Padding(2);
-            this.button7.Name = "button7";
-            this.button7.Size = new System.Drawing.Size(112, 43);
-            this.button7.TabIndex = 446;
-            this.button7.Text = "Retirar Caixa";
-            this.button7.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.button7.UseVisualStyleBackColor = true;
-            this.button7.Click += new System.EventHandler(this.button7_Click);
-            // 
-            // btn_delete_venda
-            // 
-            this.btn_delete_venda.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btn_delete_venda.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_delete_venda.ForeColor = System.Drawing.Color.Black;
-            this.btn_delete_venda.Image = global::Zenfox_Software.Properties.Resources.remove_cart;
-            this.btn_delete_venda.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btn_delete_venda.Location = new System.Drawing.Point(425, 364);
-            this.btn_delete_venda.Margin = new System.Windows.Forms.Padding(2);
-            this.btn_delete_venda.Name = "btn_delete_venda";
-            this.btn_delete_venda.Size = new System.Drawing.Size(99, 43);
-            this.btn_delete_venda.TabIndex = 2;
-            this.btn_delete_venda.Text = "Remover";
-            this.btn_delete_venda.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btn_delete_venda.UseVisualStyleBackColor = true;
-            this.btn_delete_venda.Click += new System.EventHandler(this.btn_delete_venda_Click);
-            // 
             // dg_venda
             // 
             this.dg_venda.AllowUserToDeleteRows = false;
@@ -311,23 +244,6 @@
             this.dg_venda.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dg_venda.Size = new System.Drawing.Size(522, 328);
             this.dg_venda.TabIndex = 1;
-            // 
-            // button1
-            // 
-            this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.button1.BackgroundImage = global::Zenfox_Software.Properties.Resources.eraser;
-            this.button1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button1.Location = new System.Drawing.Point(0, 364);
-            this.button1.Margin = new System.Windows.Forms.Padding(2);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(134, 43);
-            this.button1.TabIndex = 445;
-            this.button1.Text = "F3 - Limpar Venda";
-            this.button1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // lbl_cabecalho_caixa
             // 
@@ -372,34 +288,9 @@
             this.lbl_nome_operador.Text = "Nome Operador";
             this.lbl_nome_operador.Click += new System.EventHandler(this.label2_Click);
             // 
-            // button2
-            // 
-            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button2.ForeColor = System.Drawing.Color.White;
-            this.button2.Image = global::Zenfox_Software.Properties.Resources.users;
-            this.button2.Location = new System.Drawing.Point(4, 21);
-            this.button2.Margin = new System.Windows.Forms.Padding(2);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(38, 35);
-            this.button2.TabIndex = 3;
-            this.button2.UseVisualStyleBackColor = true;
-            // 
-            // btn_logoff
-            // 
-            this.btn_logoff.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btn_logoff.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_logoff.ForeColor = System.Drawing.Color.White;
-            this.btn_logoff.Image = global::Zenfox_Software.Properties.Resources.exit__3_;
-            this.btn_logoff.Location = new System.Drawing.Point(486, 17);
-            this.btn_logoff.Margin = new System.Windows.Forms.Padding(2);
-            this.btn_logoff.Name = "btn_logoff";
-            this.btn_logoff.Size = new System.Drawing.Size(38, 35);
-            this.btn_logoff.TabIndex = 2;
-            this.btn_logoff.UseVisualStyleBackColor = true;
-            this.btn_logoff.Click += new System.EventHandler(this.button2_Click);
-            // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.button12);
             this.groupBox2.Controls.Add(this.lbl_nome_cliente);
             this.groupBox2.Location = new System.Drawing.Point(9, 63);
             this.groupBox2.Margin = new System.Windows.Forms.Padding(2);
@@ -417,7 +308,7 @@
             this.lbl_nome_cliente.Location = new System.Drawing.Point(4, 15);
             this.lbl_nome_cliente.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lbl_nome_cliente.Name = "lbl_nome_cliente";
-            this.lbl_nome_cliente.Size = new System.Drawing.Size(498, 44);
+            this.lbl_nome_cliente.Size = new System.Drawing.Size(454, 44);
             this.lbl_nome_cliente.TabIndex = 0;
             this.lbl_nome_cliente.Text = "Nenhum Cliente Selecionado";
             this.lbl_nome_cliente.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -510,6 +401,111 @@
             this.lbl_hora.TabIndex = 448;
             this.lbl_hora.Text = "00:43";
             // 
+            // lbl_cpf
+            // 
+            this.lbl_cpf.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F);
+            this.lbl_cpf.Location = new System.Drawing.Point(15, 128);
+            this.lbl_cpf.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lbl_cpf.Name = "lbl_cpf";
+            this.lbl_cpf.Size = new System.Drawing.Size(498, 44);
+            this.lbl_cpf.TabIndex = 455;
+            this.lbl_cpf.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // timer1
+            // 
+            this.timer1.Enabled = true;
+            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
+            // 
+            // button11
+            // 
+            this.button11.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.button11.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button11.BackgroundImage")));
+            this.button11.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.button11.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.button11.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button11.ImageAlign = System.Drawing.ContentAlignment.BottomLeft;
+            this.button11.Location = new System.Drawing.Point(269, 539);
+            this.button11.Margin = new System.Windows.Forms.Padding(2);
+            this.button11.Name = "button11";
+            this.button11.Size = new System.Drawing.Size(117, 43);
+            this.button11.TabIndex = 458;
+            this.button11.Text = "Orçamentos";
+            this.button11.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.button11.UseVisualStyleBackColor = true;
+            this.button11.Click += new System.EventHandler(this.button11_Click_1);
+            // 
+            // button6
+            // 
+            this.button6.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.button6.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button6.BackgroundImage")));
+            this.button6.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.button6.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.button6.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button6.ImageAlign = System.Drawing.ContentAlignment.BottomLeft;
+            this.button6.Location = new System.Drawing.Point(269, 492);
+            this.button6.Margin = new System.Windows.Forms.Padding(2);
+            this.button6.Name = "button6";
+            this.button6.Size = new System.Drawing.Size(117, 43);
+            this.button6.TabIndex = 457;
+            this.button6.Text = "Clientes";
+            this.button6.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.button6.UseVisualStyleBackColor = true;
+            this.button6.Click += new System.EventHandler(this.button6_Click_2);
+            // 
+            // button10
+            // 
+            this.button10.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.button10.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button10.BackgroundImage")));
+            this.button10.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.button10.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.button10.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button10.ImageAlign = System.Drawing.ContentAlignment.BottomLeft;
+            this.button10.Location = new System.Drawing.Point(390, 539);
+            this.button10.Margin = new System.Windows.Forms.Padding(2);
+            this.button10.Name = "button10";
+            this.button10.Size = new System.Drawing.Size(126, 43);
+            this.button10.TabIndex = 456;
+            this.button10.Text = "Configurações";
+            this.button10.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.button10.UseVisualStyleBackColor = true;
+            this.button10.Click += new System.EventHandler(this.button10_Click_1);
+            // 
+            // button9
+            // 
+            this.button9.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.button9.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button9.BackgroundImage")));
+            this.button9.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.button9.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.button9.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button9.ImageAlign = System.Drawing.ContentAlignment.BottomLeft;
+            this.button9.Location = new System.Drawing.Point(149, 492);
+            this.button9.Margin = new System.Windows.Forms.Padding(2);
+            this.button9.Name = "button9";
+            this.button9.Size = new System.Drawing.Size(111, 43);
+            this.button9.TabIndex = 454;
+            this.button9.Text = "Incluir CPF";
+            this.button9.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.button9.UseVisualStyleBackColor = true;
+            this.button9.Click += new System.EventHandler(this.button9_Click_1);
+            // 
+            // btn_balanca
+            // 
+            this.btn_balanca.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.btn_balanca.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btn_balanca.BackgroundImage")));
+            this.btn_balanca.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.btn_balanca.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btn_balanca.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_balanca.ImageAlign = System.Drawing.ContentAlignment.BottomLeft;
+            this.btn_balanca.Location = new System.Drawing.Point(149, 539);
+            this.btn_balanca.Margin = new System.Windows.Forms.Padding(2);
+            this.btn_balanca.Name = "btn_balanca";
+            this.btn_balanca.Size = new System.Drawing.Size(111, 43);
+            this.btn_balanca.TabIndex = 453;
+            this.btn_balanca.Text = "Balança";
+            this.btn_balanca.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btn_balanca.UseVisualStyleBackColor = true;
+            this.btn_balanca.Click += new System.EventHandler(this.button6_Click_1);
+            // 
             // button5
             // 
             this.button5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
@@ -518,10 +514,10 @@
             this.button5.Cursor = System.Windows.Forms.Cursors.Hand;
             this.button5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button5.ImageAlign = System.Drawing.ContentAlignment.BottomLeft;
-            this.button5.Location = new System.Drawing.Point(401, 492);
+            this.button5.Location = new System.Drawing.Point(390, 492);
             this.button5.Margin = new System.Windows.Forms.Padding(2);
             this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(115, 43);
+            this.button5.Size = new System.Drawing.Size(126, 43);
             this.button5.TabIndex = 452;
             this.button5.Text = "Fechar Caixa";
             this.button5.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -578,6 +574,20 @@
             this.btn_minimizar.UseVisualStyleBackColor = true;
             this.btn_minimizar.Click += new System.EventHandler(this.btn_minimizar_Click);
             // 
+            // button12
+            // 
+            this.button12.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.button12.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button12.ForeColor = System.Drawing.Color.White;
+            this.button12.Image = global::Zenfox_Software.Properties.Resources.delete;
+            this.button12.Location = new System.Drawing.Point(462, 17);
+            this.button12.Margin = new System.Windows.Forms.Padding(2);
+            this.button12.Name = "button12";
+            this.button12.Size = new System.Drawing.Size(38, 35);
+            this.button12.TabIndex = 4;
+            this.button12.UseVisualStyleBackColor = true;
+            this.button12.Click += new System.EventHandler(this.button12_Click);
+            // 
             // btn_fechar
             // 
             this.btn_fechar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
@@ -592,74 +602,118 @@
             this.btn_fechar.UseVisualStyleBackColor = true;
             this.btn_fechar.Click += new System.EventHandler(this.btn_fechar_Click);
             // 
-            // btn_balanca
+            // button2
             // 
-            this.btn_balanca.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.btn_balanca.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btn_balanca.BackgroundImage")));
-            this.btn_balanca.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.btn_balanca.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btn_balanca.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_balanca.ImageAlign = System.Drawing.ContentAlignment.BottomLeft;
-            this.btn_balanca.Location = new System.Drawing.Point(149, 539);
-            this.btn_balanca.Margin = new System.Windows.Forms.Padding(2);
-            this.btn_balanca.Name = "btn_balanca";
-            this.btn_balanca.Size = new System.Drawing.Size(111, 43);
-            this.btn_balanca.TabIndex = 453;
-            this.btn_balanca.Text = "Balança";
-            this.btn_balanca.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btn_balanca.UseVisualStyleBackColor = true;
-            this.btn_balanca.Click += new System.EventHandler(this.button6_Click_1);
+            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button2.ForeColor = System.Drawing.Color.White;
+            this.button2.Image = global::Zenfox_Software.Properties.Resources.users;
+            this.button2.Location = new System.Drawing.Point(4, 21);
+            this.button2.Margin = new System.Windows.Forms.Padding(2);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(38, 35);
+            this.button2.TabIndex = 3;
+            this.button2.UseVisualStyleBackColor = true;
             // 
-            // button9
+            // btn_logoff
             // 
-            this.button9.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.button9.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button9.BackgroundImage")));
-            this.button9.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.button9.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.button9.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button9.ImageAlign = System.Drawing.ContentAlignment.BottomLeft;
-            this.button9.Location = new System.Drawing.Point(149, 492);
-            this.button9.Margin = new System.Windows.Forms.Padding(2);
-            this.button9.Name = "button9";
-            this.button9.Size = new System.Drawing.Size(111, 43);
-            this.button9.TabIndex = 454;
-            this.button9.Text = "Incluir CPF";
-            this.button9.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.button9.UseVisualStyleBackColor = true;
-            this.button9.Click += new System.EventHandler(this.button9_Click_1);
+            this.btn_logoff.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btn_logoff.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_logoff.ForeColor = System.Drawing.Color.White;
+            this.btn_logoff.Image = global::Zenfox_Software.Properties.Resources.exit__3_;
+            this.btn_logoff.Location = new System.Drawing.Point(486, 17);
+            this.btn_logoff.Margin = new System.Windows.Forms.Padding(2);
+            this.btn_logoff.Name = "btn_logoff";
+            this.btn_logoff.Size = new System.Drawing.Size(38, 35);
+            this.btn_logoff.TabIndex = 2;
+            this.btn_logoff.UseVisualStyleBackColor = true;
+            this.btn_logoff.Click += new System.EventHandler(this.button2_Click);
             // 
-            // lbl_cpf
+            // button8
             // 
-            this.lbl_cpf.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F);
-            this.lbl_cpf.Location = new System.Drawing.Point(15, 128);
-            this.lbl_cpf.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.lbl_cpf.Name = "lbl_cpf";
-            this.lbl_cpf.Size = new System.Drawing.Size(498, 44);
-            this.lbl_cpf.TabIndex = 455;
-            this.lbl_cpf.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.button8.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.button8.BackgroundImage = global::Zenfox_Software.Properties.Resources._001_atm1;
+            this.button8.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.button8.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button8.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.button8.Location = new System.Drawing.Point(254, 364);
+            this.button8.Margin = new System.Windows.Forms.Padding(2);
+            this.button8.Name = "button8";
+            this.button8.Size = new System.Drawing.Size(127, 43);
+            this.button8.TabIndex = 447;
+            this.button8.Text = "Acrescentar Caixa";
+            this.button8.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.button8.UseVisualStyleBackColor = true;
+            this.button8.Click += new System.EventHandler(this.button8_Click);
             // 
-            // button10
+            // button7
             // 
-            this.button10.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.button10.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button10.BackgroundImage")));
-            this.button10.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.button10.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.button10.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button10.ImageAlign = System.Drawing.ContentAlignment.BottomLeft;
-            this.button10.Location = new System.Drawing.Point(401, 539);
-            this.button10.Margin = new System.Windows.Forms.Padding(2);
-            this.button10.Name = "button10";
-            this.button10.Size = new System.Drawing.Size(115, 43);
-            this.button10.TabIndex = 456;
-            this.button10.Text = "Configurações";
-            this.button10.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.button10.UseVisualStyleBackColor = true;
-            this.button10.Click += new System.EventHandler(this.button10_Click_1);
+            this.button7.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.button7.BackgroundImage = global::Zenfox_Software.Properties.Resources._002_atm_11;
+            this.button7.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.button7.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button7.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.button7.Location = new System.Drawing.Point(138, 364);
+            this.button7.Margin = new System.Windows.Forms.Padding(2);
+            this.button7.Name = "button7";
+            this.button7.Size = new System.Drawing.Size(112, 43);
+            this.button7.TabIndex = 446;
+            this.button7.Text = "Retirar Caixa";
+            this.button7.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.button7.UseVisualStyleBackColor = true;
+            this.button7.Click += new System.EventHandler(this.button7_Click);
             // 
-            // timer1
+            // btn_delete_venda
             // 
-            this.timer1.Enabled = true;
-            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
+            this.btn_delete_venda.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btn_delete_venda.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_delete_venda.ForeColor = System.Drawing.Color.Black;
+            this.btn_delete_venda.Image = global::Zenfox_Software.Properties.Resources.remove_cart;
+            this.btn_delete_venda.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btn_delete_venda.Location = new System.Drawing.Point(425, 364);
+            this.btn_delete_venda.Margin = new System.Windows.Forms.Padding(2);
+            this.btn_delete_venda.Name = "btn_delete_venda";
+            this.btn_delete_venda.Size = new System.Drawing.Size(99, 43);
+            this.btn_delete_venda.TabIndex = 2;
+            this.btn_delete_venda.Text = "Remover";
+            this.btn_delete_venda.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btn_delete_venda.UseVisualStyleBackColor = true;
+            this.btn_delete_venda.Click += new System.EventHandler(this.btn_delete_venda_Click);
+            // 
+            // button1
+            // 
+            this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.button1.BackgroundImage = global::Zenfox_Software.Properties.Resources.eraser;
+            this.button1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.button1.Location = new System.Drawing.Point(0, 364);
+            this.button1.Margin = new System.Windows.Forms.Padding(2);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(134, 43);
+            this.button1.TabIndex = 445;
+            this.button1.Text = "F3 - Limpar Venda";
+            this.button1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // btn_search
+            // 
+            this.btn_search.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btn_search.FlatAppearance.BorderSize = 0;
+            this.btn_search.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_search.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_search.ForeColor = System.Drawing.Color.Black;
+            this.btn_search.Image = global::Zenfox_Software.Properties.Resources.search__1_;
+            this.btn_search.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btn_search.Location = new System.Drawing.Point(379, 10);
+            this.btn_search.Margin = new System.Windows.Forms.Padding(2);
+            this.btn_search.Name = "btn_search";
+            this.btn_search.Size = new System.Drawing.Size(119, 35);
+            this.btn_search.TabIndex = 1;
+            this.btn_search.Text = "F1 - Pesquisar";
+            this.btn_search.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btn_search.UseVisualStyleBackColor = true;
+            this.btn_search.Click += new System.EventHandler(this.btn_search_Click);
             // 
             // Caixa
             // 
@@ -668,6 +722,8 @@
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1059, 655);
             this.ControlBox = false;
+            this.Controls.Add(this.button11);
+            this.Controls.Add(this.button6);
             this.Controls.Add(this.button10);
             this.Controls.Add(this.lbl_cpf);
             this.Controls.Add(this.button9);
@@ -759,5 +815,8 @@
         private System.Windows.Forms.Label lbl_cpf;
         private System.Windows.Forms.Button button10;
         private System.Windows.Forms.Timer timer1;
+        private System.Windows.Forms.Button button6;
+        private System.Windows.Forms.Button button11;
+        private System.Windows.Forms.Button button12;
     }
 }

@@ -463,6 +463,7 @@ namespace Zenfox_Software
         }
 
         Boolean validacao = true;
+        Boolean enviar_contabilidade = false;
         String msg_erro = "";
 
         private void background_checkup_DoWork(object sender, DoWorkEventArgs e)
@@ -497,7 +498,37 @@ namespace Zenfox_Software
 
 
             }
-            
+
+
+
+            // Verifica período da contabilidade
+            DateTime dt = DateTime.Now;
+            dt = dt.AddMonths(-1);
+
+            String mes = dt.Month.ToString();
+            if (mes.Length == 1)
+                mes = "0" + mes;
+
+            if (Zenfox_Software_OO.Cadastros.Contabilidade.verifica_mes_envio_contabilidade(dt.Year + "" + mes))
+            {
+                String acbr = "";
+                String cnpj = "";
+
+                Zenfox_Software_OO.Cadastros.Configuracao cmd = new Zenfox_Software_OO.Cadastros.Configuracao();
+                acbr = cmd.seleciona(new Zenfox_Software_OO.Cadastros.Entidade_Configuracao()).acbr;
+
+                Zenfox_Software_OO.Cadastros.Empresa cmdEmpresa = new Zenfox_Software_OO.Cadastros.Empresa();
+                cnpj = cmdEmpresa.seleciona().cnpj;
+
+                if (System.IO.Directory.Exists(acbr + "/Arqs/SAT/Vendas/" + cnpj.Replace(".", "").Replace("/", "").Replace("-", "") + "/" + dt.Year + "" + mes))
+                {
+                    this.enviar_contabilidade = true;
+                }
+                else
+                {
+                    this.enviar_contabilidade = false;
+                }
+            }
 
         }
 
@@ -512,11 +543,19 @@ namespace Zenfox_Software
                 gbAlertaSistema.Visible = true;
                 lbl_alerta_sistema.Text = this.msg_erro;
             }
+
+            btn_contabilidade.Visible = this.enviar_contabilidade;
         }
 
         private void contabilidadeToolStripMenuItem1_Click(object sender, EventArgs e)
         {
             Cadastros.Contabilidade cmd = new Cadastros.Contabilidade();
+            cmd.Show();
+        }
+
+        private void button11_Click(object sender, EventArgs e)
+        {
+            Gerenciamento.Orcamento cmd = new Gerenciamento.Orcamento(false);
             cmd.Show();
         }
     }

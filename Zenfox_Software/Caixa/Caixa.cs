@@ -16,6 +16,7 @@ namespace Zenfox_Software.caixa
         Int32 id_usuario = 0;
         Int32 id_produto = 0;
         Int32 n_item = 0;
+        Int32 id_cliente = 0;
 
         public Caixa(Int32 id)
         {
@@ -220,7 +221,7 @@ namespace Zenfox_Software.caixa
                     Zenfox_Software_OO.Cadastros.Vendas vcmd = new Zenfox_Software_OO.Cadastros.Vendas();
                     Int32 id = vcmd.cadastra(vendas);
 
-                    Caixa_Fechamento cmd = new Caixa_Fechamento(id,this.id_usuario,lbl_cpf.Text);
+                    Caixa_Fechamento cmd = new Caixa_Fechamento(id,this.id_usuario,lbl_cpf.Text,this.id_cliente);
                     cmd.ShowDialog();
 
                     if (cmd.vendido)
@@ -245,6 +246,8 @@ namespace Zenfox_Software.caixa
                 dg_venda.Rows.Clear();
                 calcula_total();
                 lbl_cpf.Text = "";
+                lbl_nome_cliente.Text = "Nenhum cliente Selecionado";
+                this.id_cliente = 0;
             }
             else if (MessageBox.Show("Deseja realmente limpar esta venda ?", "Confirmar", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1) == System.Windows.Forms.DialogResult.Yes)
             {
@@ -252,6 +255,8 @@ namespace Zenfox_Software.caixa
                 dg_venda.Rows.Clear();
                 calcula_total();
                 lbl_cpf.Text = "";
+                lbl_nome_cliente.Text = "Nenhum cliente Selecionado";
+                this.id_cliente = 0;
             }
         }
 
@@ -377,6 +382,7 @@ namespace Zenfox_Software.caixa
         private void button1_Click(object sender, EventArgs e)
         {
             limpa_venda(false);
+            button12_Click(sender, e);
         }
 
         private void btn_search_Click(object sender, EventArgs e)
@@ -786,7 +792,7 @@ namespace Zenfox_Software.caixa
 
             if (cmd.txt_cpf.Text.Length > 0)
                 lbl_cpf.Text = cmd.txt_cpf.Text;
-
+            
         }
 
         private void button10_Click_1(object sender, EventArgs e)
@@ -808,6 +814,33 @@ namespace Zenfox_Software.caixa
             lbl_hora.Text = data.ToShortTimeString();
             lbl_data.Text = data.ToShortDateString();
 
+        }
+
+        private void button6_Click_2(object sender, EventArgs e)
+        {
+            Pesquisa_cliente cmd = new Pesquisa_cliente();
+            cmd.ShowDialog();
+
+            if(cmd.cliente != "")
+            {
+                this.id_cliente = Int32.Parse(cmd.cliente.Split('-')[0].Trim());
+                lbl_nome_cliente.Text = cmd.cliente;
+                lbl_cpf.Text = cmd.cpf;
+               
+            }
+        }
+
+        private void button12_Click(object sender, EventArgs e)
+        {
+            lbl_nome_cliente.Text = "Nenhum cliente Selecionado";
+            this.id_cliente = 0;
+            lbl_cpf.Text = "";
+        }
+
+        private void button11_Click_1(object sender, EventArgs e)
+        {
+            Gerenciamento.Orcamento cmd = new Gerenciamento.Orcamento(true);
+            cmd.ShowDialog();
         }
     }
 }

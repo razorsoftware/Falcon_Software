@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
+using System.Net.Mail;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -12,9 +14,67 @@ namespace Zenfox_Software.contabilidade
 {
     public partial class Enviar_XML : Form
     {
+        Double valor_total_venda;
+        String path;
+
+        String destino;
+        String email;
+
         public Enviar_XML()
         {
             InitializeComponent();
+
+            Zenfox_Software_OO.Cadastros.Contabilidade cmd = new Zenfox_Software_OO.Cadastros.Contabilidade();
+            txt_email.Text = cmd.seleciona(new Zenfox_Software_OO.Cadastros.Contabilidade.Entidade()).email;
+            
+            
+            Zenfox_Software_OO.Cadastros.Configuracao cmdConfig = new Zenfox_Software_OO.Cadastros.Configuracao();
+            String path = cmdConfig.seleciona(new Zenfox_Software_OO.Cadastros.Entidade_Configuracao()).acbr;
+
+            Zenfox_Software_OO.Cadastros.Empresa cmdEmpresa = new Zenfox_Software_OO.Cadastros.Empresa();
+            String cnpj = cmdEmpresa.seleciona().cnpj;
+
+            DateTime dt = DateTime.Now;
+            dt = dt.AddMonths(-1);
+
+            String mes = dt.Month.ToString();
+            if (mes.Length == 1)
+                mes = "0" + mes;
+
+            this.path = path + "/Arqs/SAT/Vendas/" + cnpj.Replace(".", "").Replace("/", "").Replace("-", "") + "/" + dt.Year + "" + mes;
+            DirectoryInfo Dir = new DirectoryInfo(this.path);
+
+            // Busca automaticamente todos os arquivos em todos os subdiretórios
+            FileInfo[] Files = Dir.GetFiles("*", SearchOption.AllDirectories);
+            DataTable dt_produtos = new DataTable();
+
+            String[,] itens = new String[5000, 2];
+
+            int linha = 0;
+
+            Double totalvenda = 0;
+
+            foreach (FileInfo File in Files)
+            {
+
+                System.Xml.XmlDocument xml = new System.Xml.XmlDocument();
+                xml.Load(File.FullName);
+                System.Xml.XmlElement root = xml.DocumentElement;
+                System.Xml.XmlNodeList nodeList = root.GetElementsByTagName("total");
+
+                totalvenda += Double.Parse(nodeList[0]["vCFe"].InnerText, System.Globalization.CultureInfo.InvariantCulture);
+
+                if (Double.Parse(nodeList[0]["vCFe"].InnerText, System.Globalization.CultureInfo.InvariantCulture) == 0)
+                {
+                    nodeList = root.GetElementsByTagName("pgto");
+                    totalvenda += Double.Parse(nodeList[0]["vTroco"].InnerText, System.Globalization.CultureInfo.InvariantCulture);
+                }
+
+            }
+
+            lbl_total_vendas.Text = "R$ " + totalvenda;
+            this.valor_total_venda = totalvenda;
+
         }
 
         Int32 progresso = 0;
@@ -52,18 +112,45 @@ namespace Zenfox_Software.contabilidade
 
             if (this.progresso == 8)
             {
-                lbl_progresso.Text = "Enviando ...";
+                lbl_progresso.Text = "Email Enviado ...";
                 this.progresso++;
             }
 
             if (this.progresso == 7)
             {
                 lbl_progresso.Text = "Enviando ...";
+
+                Boolean status = Zenfox_Software_OO.helper.envia_email(txt_email.Text, this.email);
+
+                if (status)
+                    this.progresso++;
+                else
+                {
+                    this.progresso = 0;
+                    timer1.Enabled = false;
+                    txt_email.Visible = true;
+                    lbl_email.Visible = true;
+                    btn_processar.Visible = true;
+                    progressBar1.Visible = false;
+                    lbl_progresso.Visible = false;
+                    MessageBox.Show("Falha ao enviar email, Por favor contate o suporte !");
+                }
+
                 this.progresso++;
             }
 
             if (this.progresso == 6)
             {
+                this.email = "<body>";
+                this.email += "<h1 style='text-align:center; margin:0px'>Sistema Falcon</h1>";
+                this.email += "<h2 style='text-align:center; margin:0px'>NH Calçados</h2>";
+                this.email += "<h3 style='text-align:center; margin:0px'>Fechamento 02/2019</h3>";
+                this.email += "<hr/>";
+                this.email += "<ul><li><b>Total de Vendas </b> R$ "+ this.valor_total_venda.ToString("F2").Replace(".",",") +"</li>";
+                this.email += "<li><b>Total de Cancelamentos </b> R$ 0,00</li>";
+                this.email += "<li><b>Fechamento </b> R$ "+ this.valor_total_venda.ToString("F2").Replace(".", ",") + "</li></ul>";
+                this.email += "</body>";
+
                 lbl_progresso.Text = "Formulando email";
                 this.progresso++;
             }
@@ -71,7 +158,22 @@ namespace Zenfox_Software.contabilidade
             if (this.progresso == 5)
             {
                 lbl_progresso.Text = "Testando módulo de envio de email";
-                this.progresso++;
+
+              //  Boolean status = Zenfox_Software_OO.helper.envia_email("razorsoftbr@gmail.com", "Teste de email");
+              //
+              //  if(status)
+                    this.progresso++;
+              //  else
+              //  {
+              //      this.progresso = 0;
+              //      timer1.Enabled = false;
+              //      txt_email.Visible = true;
+              //      lbl_email.Visible = true;
+              //      btn_processar.Visible = true;
+              //      progressBar1.Visible = false;
+              //      lbl_progresso.Visible = false;
+              //      MessageBox.Show("Falha ao enviar email, Por favor contate o suporte !");
+              //  }
             }
 
             if (this.progresso == 4)
