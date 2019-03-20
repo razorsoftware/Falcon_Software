@@ -12,6 +12,8 @@ namespace Zenfox_Software.Gerenciamento
 {
     public partial class Orcamento : Form
     {
+        public Int32 id = 0;
+
         public Orcamento(Boolean converter_em_venda)
         {
             InitializeComponent();
@@ -33,7 +35,14 @@ namespace Zenfox_Software.Gerenciamento
 
         private void btn_converter_em_venda_Click(object sender, EventArgs e)
         {
-
+            try
+            {
+                this.id = Int32.Parse(dataGridView1.CurrentRow.Cells[0].Value.ToString());
+            }
+            catch
+            {
+                MessageBox.Show("Você deve selecionar o orçamento a ser convertido em venda !");
+            }
         }
     }
 }

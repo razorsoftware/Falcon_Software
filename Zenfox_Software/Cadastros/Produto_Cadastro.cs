@@ -13,12 +13,21 @@ namespace Zenfox_Software.Cadastros
     public partial class Produto_Cadastro : Form
     {
         public Int32 id { get; set; }
+        Boolean valida_ncm = false;
+
         public Produto_Cadastro()
         {
             InitializeComponent();
             popula_combobox_fornecedor();
             popula_combobox_grupo_produto();
             popula_combobox_unidade_medida();
+
+            Zenfox_Software_OO.Cadastros.Entidade_Configuracao item = new Zenfox_Software_OO.Cadastros.Entidade_Configuracao();
+            Zenfox_Software_OO.Cadastros.Configuracao cmd = new Zenfox_Software_OO.Cadastros.Configuracao();
+            item = cmd.seleciona(item);
+            this.valida_ncm = item.valida_ncm;
+
+
         }
 
         public void preenche_campos()
@@ -98,18 +107,41 @@ namespace Zenfox_Software.Cadastros
             Zenfox_Software_OO.Cadastros.Entidade_Produto item = new Zenfox_Software_OO.Cadastros.Entidade_Produto();
 
             //Validando NCM
-            txtNCM.Text = "00000000"; 
-                        if (txtNCM.Text.Length >= 8)
-           // if(true)
-           {
+            txtNCM.Text = "00000000";
+            
+            if(this.valida_ncm)
+                if (txtNCM.Text.Length >= 8) { }
+                    else
+                {
+                    MessageBox.Show("Você precisa informar o NCM válido deste produto");
+                    tabControl1.SelectedTab = tabPage2;
+                    txtNCM.Focus();
+                }
+                {
+
+                }
+
+            if (true)
+            {
                 //Validando CFOP
                 try
                 {
                     try
                     {
-                        //if (Int32.Parse(txtCFOP.SelectedItem.ToString().Split('-')[0].Trim()) > 0)
-                        if (true)
-                        {
+                        
+                        // VALIDANDO CFOP
+                        if(this.valida_ncm)
+                            if (Int32.Parse(txtCFOP.SelectedItem.ToString().Split('-')[0].Trim()) > 0)
+                            {
+                            }
+                            else
+                            {
+                                MessageBox.Show("Você precisa informar o CFOP deste produto");
+                                tabControl1.SelectedTab = tabPage2;
+                                txtCFOP.Focus();
+                            }
+
+                        if(true){
                             //Validando EAN
                             if (txt_ean.Text != null && txt_ean.Text != "")
                             {
@@ -212,6 +244,7 @@ namespace Zenfox_Software.Cadastros
                                 {
                                     item.cfop = 0;
                                 }
+
                                 item.ncm = txtNCM.Text;
 
                                 #region Estoque
@@ -791,3 +824,6 @@ namespace Zenfox_Software.Cadastros
         }
     }
 }
+
+
+

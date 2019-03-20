@@ -19,7 +19,6 @@ namespace Zenfox_Software.Cadastros
             lista_impressoras();
 
             Zenfox_Software_OO.Cadastros.Entidade_Configuracao item = new Zenfox_Software_OO.Cadastros.Entidade_Configuracao();
-
             Zenfox_Software_OO.Cadastros.Configuracao cmd = new Zenfox_Software_OO.Cadastros.Configuracao();
             item = cmd.seleciona(item);
 

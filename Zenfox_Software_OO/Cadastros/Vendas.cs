@@ -82,10 +82,9 @@ namespace Zenfox_Software_OO.Cadastros
             sql.AbrirConexao();
             sql.Comando = new Npgsql.NpgsqlCommand();
             String x = "select a.id,b.id as id_produto,b.ean,b.nome,b.ncm,b.cfop,a.quantidade,a.valor from vendas_itens as a ";
-
             x += "inner join produto as b on a.produto = b.id ";
-
             x += " where venda = " + item.id + "";
+
 
 
             sql.Comando.CommandText = x;
