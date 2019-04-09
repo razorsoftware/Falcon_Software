@@ -791,8 +791,15 @@ namespace Zenfox_Software.caixa
             cmd.ShowDialog();
 
             if (cmd.txt_cpf.Text.Length > 0)
+            {
                 lbl_cpf.Text = cmd.txt_cpf.Text;
-            
+                Zenfox_Software_OO.Cadastros.Cliente cmdcliente = new Zenfox_Software_OO.Cadastros.Cliente();
+                String nome = cmdcliente.seleciona(new Zenfox_Software_OO.Cadastros.Cliente.Entidade() { cpf = cmd.txt_cpf.Text}).nome;
+                if (nome != null)
+                    lbl_nome_cliente.Text = nome;
+                else
+                    lbl_nome_cliente.Text = "Nenhum cliente Selecionado";
+            }
         }
 
         private void button10_Click_1(object sender, EventArgs e)
@@ -841,6 +848,20 @@ namespace Zenfox_Software.caixa
         {
             Gerenciamento.Orcamento cmd = new Gerenciamento.Orcamento(true);
             cmd.ShowDialog();
+
+            if(cmd.id > 0){
+                Zenfox_Software_OO.Cadastros.Vendas cmdvendas = new Zenfox_Software_OO.Cadastros.Vendas();
+                List<Zenfox_Software_OO.Cadastros.Entidade_Vendas>list = cmdvendas.seleciona_detalhamento(new Zenfox_Software_OO.Cadastros.Entidade_Vendas() { id = cmd.id});
+
+                foreach (var item in list)
+                {
+                    txt_quantidade.Text = item.quantidade.ToString();
+                    this.id_produto = item.id_produto;
+                    txt_valor_produto.Text = item.valor_total.ToString();
+                    insere_produto();
+                }
+
+            }
         }
     }
 }

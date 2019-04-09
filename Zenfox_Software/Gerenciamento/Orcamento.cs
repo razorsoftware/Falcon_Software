@@ -38,6 +38,7 @@ namespace Zenfox_Software.Gerenciamento
             try
             {
                 this.id = Int32.Parse(dataGridView1.CurrentRow.Cells[0].Value.ToString());
+                this.Close();
             }
             catch
             {

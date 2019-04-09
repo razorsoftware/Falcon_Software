@@ -48,8 +48,7 @@ namespace Zenfox_Software_OO.Cadastros
                 sb.AppendLine("VALUES (@nome,@cpf,@rg,@endereco,@cidade,@estado,@cep,@bairro,@telefone,@celular,@observacao,@status,@numero,@complemento);");
 
                 sql.Comando = new Npgsql.NpgsqlCommand();
-
-
+                
                 sql.Comando.Parameters.AddWithValue("@nome", NpgsqlTypes.NpgsqlDbType.Varchar, item.nome);
                 sql.Comando.Parameters.AddWithValue("@cpf", NpgsqlTypes.NpgsqlDbType.Varchar, item.cpf);
                 sql.Comando.Parameters.AddWithValue("@rg", NpgsqlTypes.NpgsqlDbType.Varchar, item.rg);
@@ -117,6 +116,13 @@ namespace Zenfox_Software_OO.Cadastros
                 sql.Comando.Parameters.AddWithValue("@id", item.id);
             }
 
+            if(item.cpf != null)
+            {
+                sb.AppendLine("and id = (select id from (select replace(REPLACE(cpf,'.',''),'-','')as cpf,id from cliente) as a where cpf = @cpf)   ");
+                sql.Comando.Parameters.AddWithValue("@cpf",NpgsqlTypes.NpgsqlDbType.Varchar ,item.cpf);
+            }
+
+
             sql.Comando.CommandText = sb.ToString();
             sql.AbrirConexao();
             IDataReader dr = sql.RetornaDados_v2();
@@ -168,7 +174,7 @@ namespace Zenfox_Software_OO.Cadastros
             sql.localdb();
 
             sql.Comando = new Npgsql.NpgsqlCommand();
-            sql.Comando.CommandText = "select * from cliente where nome ilike '" + search + "%'";
+            sql.Comando.CommandText = "select * from cliente where status = true and nome ilike '" + search + "%'";
             sql.AbrirConexao();
             DataTable dt = sql.RetornaDados_v2_dt();
             sql.FechaConexao();
